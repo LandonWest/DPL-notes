@@ -15,7 +15,8 @@ last:    git push                                (to update the "master deposito
 
 git add .  (This will add all changes at once instead of having to add them seperately)
 
-git branch
-git checkout -b new_branch_name                  (creates new branch)
-
-text
+git branch                          (Lists the available branches and denotes which one you're on by an asteric*)
+git checkout branch_name            (switches to the specified branch)
+git checkout -b new_branch_name     (creates new branch)
+git push origin branch_name         (use this instead of just "push" to push the branch changes to github.com)
+git merge branch_name               (To merge a branch to another. ex. To merge "sample" branch to "master" branch, first make sure you're on the master branch by using "git checkout master" to switch to it, and "git branch" to double check you're on it, Then use "git merge sample". Last use "git push origin master" to push it to github.com)
