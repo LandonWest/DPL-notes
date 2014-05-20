@@ -17,3 +17,5 @@ git add .  (This will add all changes at once instead of having to add them sepe
 
 git branch
 git checkout -b new_branch_name                  (creates new branch)
+
+text
