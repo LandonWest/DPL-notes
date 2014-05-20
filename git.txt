@@ -14,3 +14,6 @@ last:    git push                                (to update the "master deposito
 .gitignore is a file that you can put other files or info in that you want to be ignored. ex. a password list that you don't want broadcast publicly.
 
 git add .  (This will add all changes at once instead of having to add them seperately)
+
+git branch
+git checkout -b new_branch_name                  (creates new branch)
