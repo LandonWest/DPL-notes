@@ -1,1 +1,16 @@
-git information
+Git Information:
+
+First, in Terminal navigate to your directory (folder) and type: "Atom ." to open the folders in Atom
+In Atom, green the green bar to the left of a number line signifies changes to the line.
+A file highlighted green signifies a file is new. Highlighted orange signifies the file has been changed.
+Make sure to SAVE your files, and that will be signified by the blue circle on the tab changing to an "x".
+
+To "stage commits" locally in Terminal type:
+first:   git status                              (to check the status of the repository)
+second:  git add filename.txt                    (to specify file to add commit)
+third:   git commit -m "description of changes"  (to note what changes you made)
+last:    git push                                (to update the "master depository" on github.com)
+
+.gitignore is a file that you can put other files or info in that you want to be ignored. ex. a password list that you don't want broadcast publicly.
+
+git add .  (This will add all changes at once instead of having to add them seperately)
