@@ -1,3 +1,62 @@
 Ruby Notes:
 
-these are my ruby notes
+IRB is a console that lets us write code and see output on the fly. This is really helpful if you don't want to open a new text file, save it, then open it in terminal and run it just to see what it does. IRB is great for quickly testing short snippets of code.
+IRB runs from within the terminal. To start IRB from the Terminal, simply type irb. To exit out of irb, type exit, and you'll be back in a regular terminal window.
+The irb promt displays the version number and the line of code you're on.
+The => symbol signifies the output of a command.
+
+Create the text files (raw code) of ruby in a text editor like Atom, then save the file as file_name.rb. Then in Terminal, navigate to the file's location and type its name (file_name.rb) to run the code (program).
+
+RUBY DATA TYPES:
+
+string: anything inside " "s. It can be words, numbers, symbols, whatever. ex. "landon west is cool" "1 + 1"
+fixnum: is an integer (any whole number) ex. 200; -5
+float:  a number that has a decimal place. ex. 400.5; 0.25
+
+concatenation: is putting two strings together into one string.
+        ex. "cat" + "dog" => "catdog"
+            "3" * 3 => "333"   (a string must come first, or it won't work)
+
+more examples:
+        "5" + "5" => "55"  (string)
+        5 + 5 => 10    (number)
+
+fixnums will only return fixnums. ex. 5 / 2 => 2
+floats will return floats. ex. 5.0 / 2.0 => 2.5    (or 5 / 2.0 => 2.5   only one number needs to be a float for it to output a float)
+
+METHODS:
+
+.class       "Landon West".class => string       This tells you what class you're working with
+.upcase      "landon west".upcase => LANDON WEST       Makes everything uppercase
+.downcase    Makes everything lower case
+.reverse     makes the string reversed
+.capitalize  capitalizes the first letter of the string
+
+You can do more than one method at once. This is called "method chaining".  ex. "landon west".reverse.upcase => "TSEW NODNAL"
+
+To add spaces between words: "landon".capitalize + " " + "west".capitalize
+
+VARIABLES:
+
+name = "landon"    the "=" sign is called an assignment
+
+you can reassign the value of the variable. ex. name = name.upcase => "LANDON"
+
+Variable Rules:
+1.  all lower case
+2.  begin with a letter
+3.  seperate words with an underscore (first_name)
+
+its good to be specific, rather than general when naming variables.
+
+WRITING RUBY CODE IN ATOM:
+
+puts:  prints a string in the terminal.  ex. puts "landon west"
+gets:  asks input from the user.  ex. gets.chomp    (the .chomp method tells the computer to stop when the enter key is pressed by the user.)
+
+ex. puts "how old are you?"
+    age = gets.chomp
+    puts "Oh, your are " + age + "?"
+
+    answer = gets.chomp
+    puts "you said" + " " + answer
