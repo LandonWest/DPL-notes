@@ -60,3 +60,32 @@ ex. puts "how old are you?"
 
     answer = gets.chomp
     puts "you said" + " " + answer
+
+TRYRUBY.ORG NOTES:
+
+.to_s  converts to a string
+.to_i  converts to an integer (number)
+.to_a  converts to an array (lists inside brackets [ ])
+
+.max  [12, 47, 35]  gives the greatest number in the list
+.sort  ticket.sort  will sort the numbers in order
+.sort!  ticket.sort!  The exclamation mark changes what the variable contains for good.
+.join  takes a list of lines and joins them into a string. also, .to_s works.
+
+*all of these string methods and more can be found on www.apidock.com/ruby
+
+
+poem["toast"] = "honeydew"    This will replace "toast" w/ "honeydew", but only the first instance it finds.
+        *the bracket means it's targeting whatever's inside them.
+
+poem.lines.to_a.reverse    This splits the poem into lines, then makes it into an array and reverses the order.
+
+:symbol    symbols use less memory than strings.
+
+hashes    a collection of things, paired up as a KEY and a VALUE. It's basically a little dictionary within curly brackets { }
+
+blocks    chunks of code which can be tacked on to many ruby methods.
+
+classes-
+accessors-    variables attached to an object which can be used outside the object.
+Instance Variables-
