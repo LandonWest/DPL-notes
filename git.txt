@@ -44,21 +44,22 @@ git diff HEAD         (This shows you all the differences (changes) since your m
 git diff --staged        (Shows changes in files already staged but not yet committed.)
 git checkout --<target>  (Discard changes on working directory file. Files change back to how they were at the last commit. ex. git checkout --octocat.txt)
 
-git rm <fielname>      (Will remove the file from the repo but also deletes it from the local file system.)
+git rm <fielname>      (Will remove the file from the local repo and also deletes it from the local file system.)
 git mv original_name new_name    (Renames a file in git. ex change me.txt to you.txt ... [git mv me.txt you.txt])
                                  (or you can rename your file in any tool and then run this:  $ mv README.txt README
                                                                                               $ git rm README.txt
                                                                                               $ git add README)
 BRANCHES:
 
-git branch                          (Lists the available branches and denotes which one you're on by an asteric*)
-git branch new_branch_name          (Creates a new branch)
-git checkout branch_name            (switches to the specified branch)
-git checkout -b new_branch_name     (creates new branch AND switches to it at same time)
-git push origin branch_name         (use this instead of just "push" to push the branch changes to github.com)
-git merge branch_name               (To merge a branch to another. ex. To merge "sample" branch to "master" branch, first make sure you're on the master branch by using "git checkout master" to switch to it,
+git branch                           (Lists the available branches and denotes which one you're on by an asteric*)
+git branch <new_branch_name>         (Creates a new branch)
+git checkout <branch_name>           (switches to the specified branch)
+git checkout -b <new_branch_name>    (creates new branch AND switches to it at same time)
+git push origin <branch_name>        (use this instead of just "push" to push the branch changes to github.com)
+git merge <branch_name>              (To merge a branch to another. ex. To merge "sample" branch to "master" branch, first make sure you're on the master branch by using "git checkout master" to switch to it,
                                      and "git branch" to double check you're on it, Then use "git merge sample". Last, use "git push origin master" to push it to github.com)
-
+git branch -d <branch_name>          (delete a branch on local repo)
+git push origin --delete <branch_name>  (deletes the previously deleted local branch from the remote repo.)
 
 GIT ADVICE:
 "staged" = Files are prepared (added) and ready to be committed.
