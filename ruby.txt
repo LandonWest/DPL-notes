@@ -89,3 +89,407 @@ blocks    chunks of code which can be tacked on to many ruby methods.
 classes-
 accessors-    variables attached to an object which can be used outside the object.
 Instance Variables-
+
+
+5/27 NOTES______________________________________________________________________
+
+comparison operators: > < >= <=
+conditional operators: && ||
+
+if/else STATEMENT_______________________
+
+if grade > 90
+  puts "you got an A"
+elsif grade < 90
+  puts "you got something else"
+else
+  puts "I don't know.."
+
+CASE STATEMENT__________________________
+
+case days
+when 'Monday'
+when 'Tuesday'
+when 'Wednesday'
+when 'Thursday'
+when 'Friday'
+else
+  puts "it's the weekend!"
+end
+
+LOOPS___________________________________
+
+sun_up = true
+
+while sun_up
+  puts "do stuff"
+  if Time.now.hour > 7
+    sun_up = false
+  end
+end
+
+UNLESS__________________________________
+
+puts "it's night time" unless sun_up
+
+-or_
+
+unless sun_up
+  puts "it's night time"
+  puts "let's party"
+end
+
+_____________________________________________
+In ruby when we want to create a new method:
+  This let's you define a new method and write out all the method's code, and then
+just call the new method, instead of writing out all that code each time you want
+to use it.
+  Inside the new method will be different "scopes". For each if/else statement,
+loop, etc. you will be in a new box (or "scope").
+
+Ex.
+
+def grab_food
+  puts "grabbing some food"
+  puts "and it's good!"
+end
+
+#To call the method:
+
+grab_food
+
+Ex.
+
+def grab_food(food)
+  puts "grabbing some #{food}"
+end
+
+grab_food("sushi")
+grab_food("pizza")
+grab_food("hot-wings")
+
+DEFINING MULTIPLE ARGUMENTS_______________________
+
+def grab_food(food, drink)
+  puts "grabbing some #{food}"
+  puts "drinking some #{drink}"
+end
+
+grab_food("suhi", "coke")
+
+__________________________________________________
+
+meals = [
+  {food: 'pizza', drink: 'beer'},
+  {food: 'sushi', drink: 'sake'},
+  {food: 'pasta', drink: 'wine'},
+  {food: 'burger', drink: 'coke'}
+]
+
+meals.each do |meal|
+  grab_food(meal[:food], meal[:drink])
+end
+
+___________________________________________________
+
+meals = []
+meal = {}
+
+puts "Please enter in a food"
+food = gets.chomp
+puts "Please enter in a drink"
+drink = gets.chomp
+
+dinner[:food] = food
+dinner[:drink] = drink
+meals << dinner
+
+meals.each do |meal|
+  grab_food(meal[:food], meal[:drink])
+end
+
+___________________________________________________
+ADD a LOOP, DEFINE a new METHOD:
+
+@meals = []
+
+def grab_food(food, drink)
+  puts "grabbing some #{food}"
+  puts "drinking some #{drink}"
+end
+
+def add_meal
+  puts "Please enter a food"
+  food = gets.chomp
+  puts "Please enter a drink"
+  drink = gets.chomp
+
+  dinner = {}
+  dinner[:food] = food
+  dinner[:drink] = drink
+  @meals << dinner
+end
+
+puts "Enter in a dinner? [Y] or [N]"
+answer = gets.chomp
+while answer.upcase == 'Y'
+  add_meal
+  puts "Enter in another dinner? [Y] or [N]"
+  answer = gets.chomp
+end
+
+@meals.each do |meal|
+  grab_food(meal[:food], meal[:drink])
+end
+_______________________________________________________
+
+Object Oriented Programing (OOP)
+"what objects am I working with and how do they interact with each other"
+
+We can create our own objects in ruby. The blueprint of the object is called the
+CLASS. A class has to begin with a Capital Letter. A class with multiple words
+must have capital letters for the first letter of each word (not seperated by _)
+
+Anything in ruby that begins with a capital letter is called a "constant" which
+is the opposite of a "variable". A class is a constant, so a class cannot change.
+
+A class is kind of like a noun that references person, place, things, etc.
+You can create a method inside a class, and the method is like the verb of that noun.
+
+
+class Animal
+  def run
+  end
+
+  def eat
+  end
+
+  def sleep
+  end
+
+  def make_noise
+  end
+
+  def play
+  end
+
+  def climb
+  end
+end
+
+class Human < Animal        (this inherits all the things from the Animal class)
+  def play_computer_games
+  end
+end
+_____________________________________________________
+
+ex.
+
+class Player
+end
+
+class Dealer < Player
+end
+
+______________________________________________________
+
+class chair
+  attr_writer :color, :size, :arms, :design, :material, :weight, :name, :brand,
+              :comfort_level, :is_broken,
+
+  attr_reader
+
+  attr_accessor
+end
+
+attributes: things that describe an object.
+attr_writer, attr_reader, and attr_accessor are a shortcut for creating methods for you.
+
+attr_writer = can assign a value to an attribute
+attr_reader = allows us to retrieve a value of an attribute
+attr_accessor = allows to both assign and return a value
+
+#Reader method
+def color
+  @color
+end
+
+#Writer method
+def color=(new_color)
+  @color = new_color
+end
+_________________________________
+instance of an object:
+
+class is the blueprint
+every time you make a new object within that class it's called an instance
+
+class Sandwhich
+end
+
+pbj = Sandwhich.new     (this creates a new instance of the class Sandwhich)
+
+________________________________
+class String
+  def reverse
+  end
+
+  def length
+  end
+
+  def capitalize
+  end
+end
+
+all of these methods (reverse, length etc.) are called "instance methods"
+
+2 Types of Methods:
+INSTANCE Methods - a method that you can only call on a instance of the class
+                   ("landon".length)
+CLASS Methods - a method that you run directly on the class itself (Sandwhich.new)
+
+____________________
+class Animal
+  def eat
+    puts "eating food"
+  end
+end
+
+cat = animal.new
+
+cat.eat
+
+=>eating food
+_____________________
+
+"instantiation" -creating a new instance of an object
+"initialize" -this method gets called every time we call .new on a class. Ruby
+              always does this for us.
+__________________________
+class Human
+
+  def initialize                (initialize sets up the default attributes)
+    @hair_color = "black"
+    @eye_color = "green"
+    @number_of_fingers = 10
+    @number_of_toes = 10
+    @heart_rate = "72bpm"
+    @skin_color = "pale and gooey"
+    @gender = "female"
+  end
+
+  #reader method
+  def skin_color
+    @skin_color
+  end
+
+  #writer method
+  def skin_color=(new_skin_color)
+    @skin_color = new_skin_color
+end
+
+
+
+baby = Human.new     (baby is a new instance of the human class, and it has all
+                      the instance variables like hair_color)
+
+if you want to access the instance variables you need some kind of accessor
+_______________________________________________
+
+-when you add the attr_accessor you can get rid of the attr_reader and attr_writer,
+ because attr_accesor does both of those.
+
+
+class Human
+  attr_accessor :hair_color, :eye_color, :number_of_fingers, :number_of_toes,
+:heart_rate, :skin_color, :gender,
+
+  def initialize                (this is setting up default attributes)
+    @hair_color = "black"
+    @eye_color = "green"
+    @number_of_fingers = 10
+    @number_of_toes = 10
+    @heart_rate = "72bpm"
+    @skin_color = "pale and gooey"
+    @gender = "female"
+  end
+end
+
+________________________________________________________________________________
+
+class Human
+  def age                     (this is a reader method)
+  end
+
+  def age=(some_new_age)        (this is a writer method)
+  end
+
+  def old_enough?             (predicate method. Will return T or F)
+  end
+
+  def die!                (this is a destructive instance method)
+  end
+end
+______________________________
+
+class TicTacToe
+  def is_x_move?
+  end
+
+  def is_o_move?
+  end
+
+  def x_wins?
+  end
+
+  def o_wins?
+  end
+end
+_____________________________________
+
+class Human
+  def die!            (the ! means this method will be destructive in some manner.)
+  end                   (the ! changes things permanently)
+end
+_____________________________________
+
+class Human
+
+  #this is a CLASS METHOD
+
+  def self.evolve                    (self is the current object that you're in)
+    puts "monkey to super being"
+  end
+end
+______________________________________
+class Human
+  attr_accessor :sex, :name
+
+  def self.create_boy(name)
+    baby = new
+    baby.sex = "male"
+    baby.name = name
+    baby
+
+  def self.create_girl(name)
+    baby = new
+    baby.sex = "female"
+    baby.name = name
+    baby
+
+  def boy?
+    sex == "male"
+  end
+
+  def girl?
+    sex == "female"
+  end
+
+  def say_name
+    puts self.name
+  end
+
+end
+_________________________________________
+
+-you can put put Anything inside a method.
