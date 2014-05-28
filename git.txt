@@ -45,6 +45,7 @@ git diff --staged        (Shows changes in files already staged but not yet comm
 git checkout --<target>  (Discard changes on working directory file. Files change back to how they were at the last commit. ex. git checkout --octocat.txt)
 
 git rm <fielname>      (Will remove the file from the local repo and also deletes it from the local file system.)
+git rm --cached <fielname>    (Will remove the file from being tracked by git, but keep the file on your local hard drive)
 git mv original_name new_name    (Renames a file in git. ex change me.txt to you.txt ... [git mv me.txt you.txt])
                                  (or you can rename your file in any tool and then run this:  $ mv README.txt README
                                                                                               $ git rm README.txt
