@@ -493,3 +493,63 @@ end
 _________________________________________
 
 -you can put put Anything inside a method.
+
+________________________________________________________________________________
+5/28 NOTES
+________________________________________________________________________________
+
+x = 4
+y = 5
+x < y ? "YEAH!" : "nope"            (a "turn-area operator" can be used for very
+=> "YEAH"                             simple if/else statements.)
+______________________________________________
+Programs usually are made up of multiple files, because they're so long. In order
+to link all these files together to run the entire program, you have to 'require'
+them. These are dependencies..
+
+DEPENDENCIES:
+
+in Terminal:
+
+~ require 'file_name'              (if the file works and it's linked-up,
+                                     ruby returns "True")
+
+Ex. in irb...
+~require 'date'
+~date.today
+~date.year
+~date.wednesday?   etc...
+~date.strftime("%Y")
+
+Ex. in irb...
+~require 'net/http'
+~require 'open.uri'
+______________________________________________
+
+ruby has a "load path" which is an array of strings that are the paths to the files
+
+require_realative    tells ruby, relative to the file's current location is another
+                     file we want to link to. You do this instead of typing out
+                     the entire path (users/landonwest/desktop/projects/ruby_stuff etc.)
+
+
+$LOAD_PATH      if you type this in to irb you can see ruby's load path, which has
+                the paths to all required ruby files
+
+_______________________________________________________
+MODULES and MIX-INS
+
+You can't do multiple class inheritance in ruby, so you have to use "include"
+
+class Car < Vehicle
+include Transportation
+end
+
+
+module Transportation         (modules are constants, and begin w/ capital letter)
+
+  def going_forward
+    puts "moving forward"
+  end
+
+end
