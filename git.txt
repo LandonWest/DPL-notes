@@ -1,71 +1,113 @@
 Git Information:
 
-First, in Terminal navigate to your directory (folder) and type: "Atom ." to open the folders in Atom
+First, in Terminal navigate to your directory (folder) and type: "Atom ." to open
+  the folders in Atom.
 In Atom, the green bar to the left of a number line signifies changes to the line.
-A file highlighted green signifies a file is new. Highlighted orange signifies the file has been changed, but not commited/pushed yet.
-Make sure to SAVE your files. That will be signified by the blue circle on the tab changing to an "x".
+A file highlighted green signifies a file is new. Highlighted orange signifies
+  the file has been changed, but not commited/pushed yet.
+Make sure to SAVE your files. That will be signified by the blue circle on the
+  tab changing to an "x".
 
 MAKING A NEW LOCAL (GIT) AND REMOTE (GITHUB) REPOSITORY and adding a file to it:
-1. In Terminal, create a new directory and switch to it. (mkdir new_directory_name; cd new_directory_name)
+1. In Terminal, create a new directory and switch to it. (mkdir new_directory_name;
+    cd new_directory_name)
 2. Make a new file (ruby) and open it in Atom (Atom new_file.rb)
 3. Work on / save new file.
 4. Initialize a new local repository. (from your new directory... (git init) )
-5. Stage (add) the new file. (git add new_file.rb) (this tells git to start tracking the file)
-6. Commit the new file and create commit message. (git commit -m "commit message...add new_file.rb")
+5. Stage (add) the new file. (git add new_file.rb) (this tells git to start
+    tracking the file)
+6. Commit the new file and create commit message.
+    (git commit -m "commit message...add new_file.rb")
 7. Create new remote repository on GitHub.com
-8. Copy & Paste the instructions from "Push an existing repository from the command line" on GitHub.com into the Terminal.
+8. Copy & Paste the instructions from "Push an existing repository from the
+    command line" on GitHub.com into the Terminal.
       (git remote add origin https://......git)
       (git push -u origin master)
 DONE!
 
-git push -u origin master (the -u tells git to remember the parameters, so next time we can simpy run push.)
+git push -u origin master (the -u tells git to remember the parameters, so next
+                            time we can simpy run push.)
                           (the remote repository is called "origin")
                           ("master" is the default branch)
 
 
 WORKING ON A FILE; ADDING, COMMITING, and PUSHING IT TO GITHUB
 1. Work on changes / save file
-2. git add filename.rb    (to specify file to add to staging area.) (You do this in the terminal from the local repository (directory) that your file is in.)
-3. git commit -m "description of changes"    (to note what changes you made and are commiting.) (Use present-imperitive tense. ex. "add new feature")
-4. git push origin master    (to update the remote repository on github.com) (change "master" to "branch_name" to push to any other branch besides master.)
+2. git add filename.rb    (to specify file to add to staging area.) (You do this
+    in the terminal from the local repository (directory) that your file is in.)
+3. git commit -m "description of changes"    (to note what changes you made and
+    are commiting.) (Use present-imperitive tense. ex. "add new feature")
+4. git push origin master    (to update the remote repository on github.com)
+    (change "master" to "branch_name" to push to any other branch besides master.)
 DONE!
 
 
 
-.gitignore is a file that you can put other files or info in that you want to be ignored. ex. a password list that you don't want broadcast publicly.
+.gitignore is a file that you can put other files or info in that you want to be
+  ignored. ex. a password list that you don't want broadcast publicly.
 
 git status  Shows what files have changed in your local working directory.
 git log     Shows all commits, starting with the newest.
 
-git add .         (This will add all files at once instead of having to add them individually)
-git add --all         (This should add all CHANGED files at once instead of individually)
+git add .         (This will add all files at once instead of having to add them
+                    individually)
+git add --all         (This should add all CHANGED files at once instead of
+                        individually)
 git reset HEAD <filename>  (Removes a file or files from the staging area.)
-git diff HEAD         (This shows you all the differences (changes) since your most recent commit (the HEAD) )
-git diff --staged        (Shows changes in files already staged but not yet committed.)
-git checkout --<target>  (Discard changes on working directory file. Files change back to how they were at the last commit. ex. git checkout --octocat.txt)
 
-git rm <fielname>      (Will remove the file from the local repo and also deletes it from the local file system.)
-git rm --cached <fielname>    (Will remove the file from being tracked by git, but keep the file on your local hard drive)
-git mv original_name new_name    (Renames a file in git. ex change me.txt to you.txt ... [git mv me.txt you.txt])
-                                 (or you can rename your file in any tool and then run this:  $ mv README.txt README
+git diff HEAD         (This shows you all the differences (changes) since your
+                        most recent commit (the HEAD) )
+git diff --staged        (Shows changes in files already staged but not yet
+                            committed.)
+git checkout --<target>  (Discard changes on working directory file. Files change
+                            back to how they were at the last commit.
+                            ex. git checkout --octocat.txt)
+
+git rm <fielname>      (Will remove the file from the local repo and also deletes
+                          it from the local file system.)
+git rm --cached <fielname>    (Will remove the file from being tracked by git,
+                                but keep the file on your local hard drive)
+git mv original_name new_name    (Renames a file in git. ex: change me.txt to
+                                    you.txt ... [git mv me.txt you.txt])
+                                    (or you can rename your file in any tool and
+                                    then run this:  $ mv README.txt README
                                                                                               $ git rm README.txt
                                                                                               $ git add README)
+
+git commit -a      (Will automatically stage ("add") files that have been modified
+                    and deleted, but new files you have not told Git about are
+                    not affected. Then it also commits them. This replaced the
+                    "git commit ." in the latest git version.)
+
+
 BRANCHES:
 
-git branch                           (Lists the available branches and denotes which one you're on by an asteric*)
+git branch                           (Lists the available branches and denotes
+                                        which one you're on by an asteric*)
 git branch <new_branch_name>         (Creates a new branch)
 git checkout <branch_name>           (switches to the specified branch)
-git checkout -b <new_branch_name>    (creates new branch AND switches to it at same time)
-git push origin <branch_name>        (use this instead of just "push" to push the branch changes to github.com)
-git merge <branch_name>              (To merge a branch to another. ex. To merge "sample" branch to "master" branch, first make sure you're on the master branch by using "git checkout master" to switch to it,
-                                     and "git branch" to double check you're on it, Then use "git merge sample". Last, use "git push origin master" to push it to github.com)
+git checkout -b <new_branch_name>    (creates new branch AND switches to it at
+                                        same time)
+git push origin <branch_name>        (use this instead of just "push" to push the
+                                        branch changes to github.com)
+git merge <branch_name>              (To merge a branch to another. ex. To merge
+                                        "sample" branch to "master" branch, first
+                                        make sure you're on the master branch by
+                                        using "git checkout master" to switch to
+                                        it, and "git branch" to double check
+                                        you're on it, Then use "git merge sample".
+                                        Last, use "git push origin master" to push
+                                        it to github.com)
 git branch -d <branch_name>          (delete a branch on local repo)
-git push origin --delete <branch_name>  (deletes the previously deleted local branch from the remote repo.)
+git push origin --delete <branch_name>  (deletes the previously deleted local
+                                          branch from the remote repo.)
 
 GIT ADVICE:
 "staged" = Files are prepared (added) and ready to be committed.
-"unstaged" = Files with changes that have not been prepared (added) to be committed.
-"untracked" = Files aren't tracked by Git yet. This usually indicates a newly created file.
+"unstaged" = Files with changes that have not been prepared (added) to be
+                committed.
+"untracked" = Files aren't tracked by Git yet. This usually indicates a newly
+                created file.
 "deleted" = File has been deleted and is waiting to be removed from Git.
 
 Using Wildcards To Add Many Files of the Same Type (ex. .txt files)
