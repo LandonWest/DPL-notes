@@ -553,3 +553,129 @@ module Transportation         (modules are constants, and begin w/ capital lette
   end
 
 end
+
+
+________________________________________________________________________________
+5/29 NOTES
+________________________________________________________________________________
+
+I/O - input output
+
+file I/O - reading a file and writing to a file
+
+"persistence" is a way to store your data so you can retrieve it later.
+
+________________
+in IRB you can type Dir.pwd and it will do the same thing as in Terminal: pwd.
+
+Dir.glob("*.rb")  gather up all the files in this current directory that end in
+  .rb and lists them in an array
+
+system("ls")  this passes ruby a system command with the command as a string.
+                (remember that ls doens't work on Windows machines)
+                *you can also use `pwd` (bat-ticks) as a shortcut to using Dir.
+
+`say -v Zervox "Droid"`    is a fun way to say stuff outloud in irb
+
+File.exists?("finding_nemo.rb")
+Dir.exists?("ruby_stuff")
+
+File.basename("#{Dir.pwd}/car.rb")
+
+-basically this is all just allowing us to navigate the filesystem Within ruby
+
+__________________________________________________________
+from irb:
+
+IO  modes "r" "r+" "w" "w+" etc.
+
+> new_file = File.new("first_file.txt", "w+")        -created new file
+
+> new_file.write("hello")            -wrote "hello" to the file
+
+*once you open a file you Have To Close It! when you're done!
+
+> new_file.close       -this closes the file. (it was saved when it was written)
+
+> File.exists?("first_file.txt")     -check if it really exists?
+
+> new_file = File.open("first_file.txt", "r")     -opens up the existing file in
+                                                    read-only mode
+
+> new_file.read          -returns a string of what the file contains
+
+> new_file.eof?         -asks "are we at the end of the file?"
+
+> new_file.close        -make sure to close the file when done with it!
+___________________________________________________________
+> new_file.read
+
+> new_file.rewind
+
+> new_file.readline
+
+> new_file.readline unless new_file.eof?
+
+> new_file.close
+__________________________________________________
+
+> File.readlines("first_file.txt")       -returns an array, each line is an index
+                                          in the array
+
+> lines = File.readlines("first_file.txt")   -stores it onto a variable
+
+> lines.each do |line|
+    puts line
+  end
+________________________________________________________________________________
+
+YAML  - "YAMML aint markup language"  is a plaintext file that has a specific
+          structure to how you format your text
+
+parsing - picking apart something for a specific reason, like a file.  YAML parser
+
+in irb:
+> require 'yaml'
+> YAML
+> YAML.load_file("contacts.yml")       -"contacts" is a file we created in atom
+
+
+
+> contacts.to_yaml
+> puts contacts.to_yaml
+
+________________________________________________________________________________
+
+GEMS
+
+Gem- is a library. A library is prepackaged code that someone else wrote. There are
+     tons of gems out there that do all kinds of stuff.
+
+rubygems.org
+
+Generally there are gems for most things you want to do and you can incorporate
+  them into your programs
+
+
+gem -v                       lists the version number of your gems
+gem list                      lists all gems on your machine
+gem list -d chronic          lists info on a specific installed gem
+
+*some gems require (are dependent) on others to work.  You have to look at the
+  gem specification file in github to see if there are dependencies
+
+www.bundler.io     gem bundler is a gem that handles dependency management for us.
+
+
+creating a new gemfile.  Gemfile  -note the G is capitalized and there's no extension
+
+source "https://rubygems.org"
+gem "chronic"
+
+
+in Terminal:
+> bundle                    -this will automatically resolve your dependencies
+                              for you and install any gems you need
+
+*doing this also creates a Gemfile.lock which lists out your gems and dependencies.
+________________________________________________________________________________
