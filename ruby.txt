@@ -659,7 +659,7 @@ Generally there are gems for most things you want to do and you can incorporate
 
 gem -v                       lists the version number of your gems
 gem list                      lists all gems on your machine
-gem list -d chronic          lists info on a specific installed gem
+gem list -d <gem_name>          lists info on a specific installed gem
 
 *some gems require (are dependent) on others to work.  You have to look at the
   gem specification file in github to see if there are dependencies
@@ -678,4 +678,107 @@ in Terminal:
                               for you and install any gems you need
 
 *doing this also creates a Gemfile.lock which lists out your gems and dependencies.
+
+for every application you use, you set up a gemfile to tell the app what gems to use.
 ________________________________________________________________________________
+5/30 notes
+________________________________________________________________________________
+
+Ruby a.k.a. MRI (Matz ruby implamentation) a.k.a. CRuby (C porgraming lang.)
+
+JRuby = Ruby on the JVM (Java virtual machine)
+
+these are all written exactly the same way but they compile down to java or c
+JVM has native threading, where ruby does not, but JRuby does!
+
+Rubinius - Ruby built in Ruby, has native threading, but is always slightly behind
+            the ruby project versions and therefore can't use the latest gems
+
+MacRuby - Ruby in Obj-C     gives you native osx implementation
+
+Maglev - VMWare GemStone (smalltalk) Ruby .  Has a prebuilt persistent storage
+          database built into it.
+
+MRuby - Embedded Ruby    started by Matz, stripped down to almost half the size
+                          of Ruby. For writing ruby code that you can embed into
+                          micro-controlers, robots, etc.
+
+RubyMotion - Ruby for iOS (Android coming soon)   you have to pay a license fee,
+                          (around $200 a year) Lets you write ruby and it compiles
+                          to native iOS, with zero side effects.
+
+Ruboto - Android Ruby     Android apps built in Java, lets you build android apps
+
+Mobiruby - Ruby to iOS and soon Android      It's free as opposed to RubyMotion,
+                          but it's not updated as often.
+
+IronRuby - Ruby to C#.NET        Lets you make native Windows applications
+RubyInSteel - Ruby Visual Studio        Microsoft let this project die off because
+                                        it's open-source and they weren't making $
+
+Opalrb - Ruby to Javascript      Lets you write programs for the front-end
+________________________________________________________________________________
+
+Gosu - 2D Video Game Framework  - a ruby gem
+Shoes - Cross-platform desktop application builder
+Chef - Miltii-server management and deployment
+Highline - Rubygem for terminal based applications (will take care of when you ask
+              for user input such as a number and they put in a word, etc.)
+Waves - 3D Video game development in Ruby
+Ruby as a utility -
+________________________________________________________________________________
+
+Debugging
+________________________________________________________________________________
+
+begin
+  g = Greeter.new("Jeremy")
+  puts g.say
+rescue ArgumentError => error
+  puts "you are missing an argument"
+  puts error
+rescue ZeroDivisionError
+  puts "you are trying to divide by zero"
+end
+
+
+This is usefull for when a user input something that throws a huge error code, then
+we can program an simple error message instead. ex. if your app relies on data
+from another website, but that website is down then it will throw a crazy error
+code. You can rescue against that error with a simple message like: "opensecrets
+is offline at the moment, try back later"
+_________________________________________
+*raise will create a runtime error where the message is whatever you want it to be.
+   once ruby gets to a "raise" message it will automatically stop and return the
+    raise message. You can use raise to figure out if your code has run to a
+      certain point.
+
+
+class Greeter
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def say(something)
+    raise "the application got to this point"
+    "#{name} says: #{something}"
+  end
+
+end
+
+g = Greeter.new("Jeremy")
+g.say("hello")
+
+___________________________________________
+Debugging TOOLS:
+
+gem 'pry'
+
+1st: create a new Gemfile in your directory
+2nd: require 'pry'   in your app
+3rd: in Terminal >bundle  to download and update pry and any dependencies
+4th: add <binding.pry> anywhere in your code that you want it to stop and open a
+      new pry session in terminal.
+____________________________________________
