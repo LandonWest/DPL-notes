@@ -867,4 +867,54 @@ puts "serving bacon"
 
 
 
-"dry" = don't repeat yourself! 
+"dry" = don't repeat yourself!
+________________________________________________________________________________
+
+Web Sites - a collection of HTML files that your browser will read. Generally
+            web sites are static, not dynamic. They won't have log-in or chat room
+            or uploading files types of things.
+
+HTML
+
+&nbsp; non-breaking space
+
+________________________________________________________________________________
+New project using 'sinatra' ruby gem...
+
+3 Files To Create When Making a New Project:
+(Gemfile, .ruby-version, .ruby-gemset)
+
+Ex.
+Gemfile
+  source "https://rubygems.org"
+  gem 'sinatra'
+
+.ruby-version
+  2.1.2
+
+.ruby-gemset
+  my_first_site
+
+_________________________
+http://www.mysite.com/      *the final slash refers to the homepage
+http://www.mysite.com/about     *the /about is the route from the homepage
+
+localhost:4567        *localhost is the machine you're on. :4567 is the port #.
+
+
+so you run the program in terminal and sinatra opens a port on localhost for your site.
+"developement log file"
+This runs a server on your machine, so you also need to "kill" the server after your
+done with cntrl C.
+
+
+erb- take plain html and embed some ruby
+sinatra will take the erb file and treat it like its html
+you can make changes on the fly to the erb file without killing and restarting the server.
+
+erb tags:   <% %>   used to print something to the screen or do something
+<%= Time.now %>   *the = says to print
+<h1><%= Time.now %></h1>
+
+<p><%= puts "Yo Yo Yo!" %></p>        this Only prints it in the terminal, it won't
+                                        display it in the webpage.
