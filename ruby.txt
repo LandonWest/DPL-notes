@@ -536,24 +536,43 @@ require_realative    tells ruby, relative to the file's current location is anot
 $LOAD_PATH      if you type this in to irb you can see ruby's load path, which has
                 the paths to all required ruby files
 
-_______________________________________________________
+________________________________________________________________________________
 MODULES and MIX-INS
 
-You can't do multiple class inheritance in ruby, so you have to use "include"
+You can't do multiple class inheritance in ruby, so if you already have an inheritance,
+and need to do another, you have to "include" a module.
 
-class Car < Vehicle
-include Transportation
-end
+#module as a mix-in:
 
-
-module Transportation         (modules are constants, and begin w/ capital letter)
-
-  def going_forward
-    puts "moving forward"
+module SaladDressing
+  def flavor_explosion
+    puts "yum salad dressing!"
   end
-
 end
 
+class Salad
+  include SaladDressing
+end
+
+house = Salad.new
+house.flavor_explosion
+__________________________
+
+# module as a namespace:
+
+module Vehicle
+  class Car
+  end
+end
+
+my_shiney_new_car = Vehicle::Car.new
+
+module Business
+  class Car
+  end
+end
+
+my_company_car = Business::Car.new     *this is different than the previous "car"
 
 ________________________________________________________________________________
 5/29 NOTES
@@ -781,4 +800,71 @@ gem 'pry'
 3rd: in Terminal >bundle  to download and update pry and any dependencies
 4th: add <binding.pry> anywhere in your code that you want it to stop and open a
       new pry session in terminal.
-____________________________________________
+________________________________________________________________________________
+
+6/2 notes
+________________________________________________________________________________
+
+Multiple Argument Methods:
+
+class Router
+
+  def get(path, options = {}, &block)        *the "&" is used on either the only
+    puts "before block"                         argument, or the last argument.
+  yield
+    puts "after block"                      *yield runs the block, then whatever
+  end                                          is underneath it.
+
+end
+
+def debug(*data)                The asterisk (*) is called a splat and says you
+  data.ech do |datum|              can have as many arguments as you want.
+    puts datum
+  end
+end
+
+r = Router.new
+r.get("thing", {protocaol: 'https'}) do
+  puts "inside block"
+end
+
+r.debug("hello", "people", "yo", "taco", "DPL", 1, 51)
+
+[].each do |something|      *this takes a block
+  puts "doing something"
+end
+
+*first argument is required, the 2nd argument has a default value of an empty hash,
+  so it's optional, 3rd argument takes a block.
+________________________________________________________________________________
+
+DSL - Domain specific language
+________________________________
+
+require 'dpl_cooking'
+
+cook('eggs') do
+  # eggs are done cooking
+  puts "serving eggs"
+end
+
+cook("bacon", style: "extra crispy") do
+  puts "serving bacon"
+end
+
+cook("toast, style: "light golden", add: "butter") do
+  puts "serving toast"
+end
+
+
+
+bacon = chef.cook ("bacon, style: "extra crispy")
+while bacon.still cooking?
+  puts "still cooking"
+  break if bacon.cooked?
+end
+puts "serving bacon"
+
+
+
+"dry" = don't repeat yourself! 
