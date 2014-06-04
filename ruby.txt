@@ -1,15 +1,22 @@
 Ruby Notes:
 
-IRB is a console that lets us write code and see output on the fly. This is really helpful if you don't want to open a new text file, save it, then open it in terminal and run it just to see what it does. IRB is great for quickly testing short snippets of code.
-IRB runs from within the terminal. To start IRB from the Terminal, simply type irb. To exit out of irb, type exit, and you'll be back in a regular terminal window.
+IRB is a console that lets us write code and see output on the fly. This is really
+helpful if you don't want to open a new text file, save it, then open it in terminal
+and run it just to see what it does. IRB is great for quickly testing short snippets
+of code.
+IRB runs from within the terminal. To start IRB from the Terminal, simply type irb.
+To exit out of irb, type exit, and you'll be back in a regular terminal window.
 The irb promt displays the version number and the line of code you're on.
 The => symbol signifies the output of a command.
 
-Create the text files (raw code) of ruby in a text editor like Atom, then save the file as file_name.rb. Then in Terminal, navigate to the file's location and type its name (file_name.rb) to run the code (program).
+Create the text files (raw code) of ruby in a text editor like Atom, then save the
+file as file_name.rb. Then in Terminal, navigate to the file's location and type
+its name (file_name.rb) to run the code (program).
 
 RUBY DATA TYPES:
 
-string: anything inside " "s. It can be words, numbers, symbols, whatever. ex. "landon west is cool" "1 + 1"
+string: anything inside " "s. It can be words, numbers, symbols, whatever.
+  ex. "landon west is cool" "1 + 1"
 fixnum: is an integer (any whole number) ex. 200; -5
 float:  a number that has a decimal place. ex. 400.5; 0.25
 
@@ -22,7 +29,8 @@ more examples:
         5 + 5 => 10    (number)
 
 fixnums will only return fixnums. ex. 5 / 2 => 2
-floats will return floats. ex. 5.0 / 2.0 => 2.5    (or 5 / 2.0 => 2.5   only one number needs to be a float for it to output a float)
+floats will return floats. ex. 5.0 / 2.0 => 2.5
+(or 5 / 2.0 => 2.5   only one number needs to be a float for it to output a float)
 
 METHODS:
 
@@ -32,7 +40,8 @@ METHODS:
 .reverse     makes the string reversed
 .capitalize  capitalizes the first letter of the string
 
-You can do more than one method at once. This is called "method chaining".  ex. "landon west".reverse.upcase => "TSEW NODNAL"
+You can do more than one method at once. This is called "method chaining".
+  ex. "landon west".reverse.upcase => "TSEW NODNAL"
 
 To add spaces between words: "landon".capitalize + " " + "west".capitalize
 
@@ -52,7 +61,8 @@ its good to be specific, rather than general when naming variables.
 WRITING RUBY CODE IN ATOM:
 
 puts:  prints a string in the terminal.  ex. puts "landon west"
-gets:  asks input from the user.  ex. gets.chomp    (the .chomp method tells the computer to stop when the enter key is pressed by the user.)
+gets:  asks input from the user.  ex. gets.chomp    (the .chomp method tells the
+        computer to stop when the enter key is pressed by the user.)
 
 ex. puts "how old are you?"
     age = gets.chomp
@@ -75,14 +85,17 @@ TRYRUBY.ORG NOTES:
 *all of these string methods and more can be found on www.apidock.com/ruby
 
 
-poem["toast"] = "honeydew"    This will replace "toast" w/ "honeydew", but only the first instance it finds.
+poem["toast"] = "honeydew"    This will replace "toast" w/ "honeydew", but only
+                                the first instance it finds.
         *the bracket means it's targeting whatever's inside them.
 
-poem.lines.to_a.reverse    This splits the poem into lines, then makes it into an array and reverses the order.
+poem.lines.to_a.reverse    This splits the poem into lines, then makes it into an
+                              array and reverses the order.
 
 :symbol    symbols use less memory than strings.
 
-hashes    a collection of things, paired up as a KEY and a VALUE. It's basically a little dictionary within curly brackets { }
+hashes    a collection of things, paired up as a KEY and a VALUE. It's basically
+            a little dictionary within curly brackets { }
 
 blocks    chunks of code which can be tacked on to many ruby methods.
 
@@ -703,7 +716,7 @@ ________________________________________________________________________________
 5/30 notes
 ________________________________________________________________________________
 
-Ruby a.k.a. MRI (Matz ruby implamentation) a.k.a. CRuby (C porgraming lang.)
+Ruby a.k.a. MRI (Matz ruby implementation) a.k.a. CRuby (C porgraming lang.)
 
 JRuby = Ruby on the JVM (Java virtual machine)
 
@@ -761,7 +774,7 @@ rescue ZeroDivisionError
 end
 
 
-This is usefull for when a user input something that throws a huge error code, then
+This is useful for when a user input something that throws a huge error code, then
 we can program an simple error message instead. ex. if your app relies on data
 from another website, but that website is down then it will throw a crazy error
 code. You can rescue against that error with a simple message like: "opensecrets
@@ -916,5 +929,28 @@ erb tags:   <% %>   used to print something to the screen or do something
 <%= Time.now %>   *the = says to print
 <h1><%= Time.now %></h1>
 
-<p><%= puts "Yo Yo Yo!" %></p>        this Only prints it in the terminal, it won't
-                                        display it in the webpage.
+<p><%= puts "Yo Yo Yo!" %></p>      this Only prints it in the terminal, it won't
+                                      display it in the webpage.
+
+________________________________________________________________________________
+
+6/3 notes
+________________________________________________________________________________
+MORE erb Practice:
+
+create a main layout.erb file for the main layout of your webpages, then...
+you can add this:
+
+<%= yield %>
+
+..into your html main page and it acts as a placeholder for the thing that changes
+on the other pages.
+Now your other pages (index, page1, etc.) don't have to copy and paste the Entire
+html code, you can just put the markup that changes on that specific page in that file.
+
+layout.erb is not a page in itself of your website, but a file that holds the
+  general layout of All pages of your website.
+
+__________________________________________________
+Add a public folder to your main project folder
+Add a css folder inside public folder

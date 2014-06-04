@@ -1,0 +1,53 @@
+CSS: cascading style sheets
+
+UI/UX
+
+UI- user interface, how the thing looks.
+UX- user experience, how easy/difficult the site is to use
+
+
+
+* {                          * applies to All elements on page
+
+}
+body {
+
+}
+#wrap {                      id:wrap
+
+}
+.row {                        class:row
+
+}
+input[type=text] {
+
+}
+ul > li {          applies styles to li elements that are directly within the ul
+
+}
+a:hover, a:active, a:focus {         the : lets you define a pseudo class
+
+}
+div p.small {          find all p tags that have a class of small inside a div
+
+}
+
+_____________________________________________
+
+div#wrap {
+  width: 980px;
+  margin: 0 auto;
+  border: 1px solid #ff9900;
+  padding: 10px;
+  box-shadow: 1px 1px 10px #333333;
+  background-color: #eeeeee;
+  font-size: 16px;
+  color: #333333;
+  font-family: Helvetica;
+}
+
+
+hex colors: #rrggbb, 0-9, a-f,  all zero's is black, all f's is white, 256 values total.
+or
+rgb(255, 180, 0)
+rgb(255, 180, 0, 0.5)  the last value is the transparency, 0 is totaly transparent, 1 is solid.
