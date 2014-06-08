@@ -51,3 +51,36 @@ hex colors: #rrggbb, 0-9, a-f,  all zero's is black, all f's is white, 256 value
 or
 rgb(255, 180, 0)
 rgb(255, 180, 0, 0.5)  the last value is the transparency, 0 is totaly transparent, 1 is solid.
+
+________________________________________________________________________________
+HMTL Forms
+________________________________________________________________________________
+A way for users to add text input to a page. The form tells the browser where to
+send that data.
+
+You can't put a child form inside a parent form
+
+The form tag requires a couple of attributes to define what it's doing:
+1. "action" attribute- tells the browser the url to whre the form will send the data.
+2. "method" attribute- the method in which you want the data to be sent. There are
+    really only two values you'll ever put in here: GET(from server, like in a
+    search form) or POST(send to server, like facebook posts).
+
+Different elements that go inside of a form:
+1.<input>   hidden - data not displayed on the webpage
+            text - normal input field, single line of text
+            password - will automatically put stars or whatever when you type in
+            radio - has the little circles that you click to fill in. You can only select one at a time.
+            checkbox - has checkboxes, you can select more than one at a time.
+            submit - creates a button for you, takes the form data and sends it.
+            reset - creates a button that clears out all the data in the form.
+2.<select>
+3.<textarea> for large text fields
+4.<button>
+
+<form action="/url..." method="get">
+
+</form>
+
+
+In sinatra "params" is the data that gets sent in the form. params have key/value pairs
