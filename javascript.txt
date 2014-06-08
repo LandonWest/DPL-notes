@@ -1,0 +1,117 @@
+JAVASCRIPT
+________________________________________________________________________________
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Javascript is a horrible language but everyone needs to know it.
+Built in 10 days by 1 guy
+
+There are a lot of compilers that will let you write ruby code and compile into js
+
+javascript is not OOP, its a Functional language
+
+"hello world" string
+1234 number
+432.32 number      There is no differentiation between integers and floats
+[] array
+{} object
+// comments in javascript
+
+
+STRINGS/FUNCTIONS:
+______________________________________________
+Javascript does Not have string interpolation. But you can do string concatenation.
+
+"1 plus 1 equals " + two
+
+javascript has "functions" which are the same as ruby "methods"
+
+"1 plus 1 equals ".capitalize()    when you call a function you have to put the
+                                    parenthesis after it to get the return value.
+
+"jeremy".toUpperCase()   the very first word of the function starts lowercase,
+                          the next words are capitalized. This is called
+                          'camel-casing', ruby uses 'snake-casing'.
+
+parseInt("1", 10)   the first argument is what you want to convert into the integer,
+                    the second argument is base-10 number system.
+
+parseFloat("4.3", 10)
+
+ASSIGNING VARIABLES:
+____________________________________________
+
+var name = "Jeremy"      local variables
+name = "Jeremy"       global variable (generaly stay away from this)
+let name = "Jeremy"      changes the scope of the variable to more like an instance var.
+
+There is no such thing as a Class or Module in javascript, you wont do Class.new
+
+_____________________________________________
+
+whenever you have a complete line of code then you put a semi-colon at the end of
+  the line.
+
+var firstName = "Jeremy";
+var lastName = "Woertink";
+var name = firstName + " " + lastName;
+
+"my name is " + name;
+
+___________________________
+
+javascript run straight in the browser not the terminal
+
+NaN ("not a number")
+
+to figure out what datatype something is, use: typeof x
+
+________________________________________
+Two ways to add objects to an array:
+
+names[3] = "Will";
+
+names.push("TY");
+________________________________________
+Creating an object (hash in ruby):
+
+var dog = {name: 'fluffy', age: 3};
+
+//keys are returned using a string, not a symbol
+dog['name']    returns: 'fluffy'
+
+assign a new value to a hash:
+
+dog['breed'] = 'pit bull';
+
+
+dog.name
+"fluffy"
+dog.breed
+"pit bull"
+
+
+
+
+
+
+
+
+
+
+confirm("Are you sure?");
+
+prompt("What is your name?")
+
+
+"null" is equivalent to ruby's "nil"
+
+
+DOM ("document object model")
+
+
+
+
+
+window.onload = function() {
+  var images - document.querySelectorAll('.col img');
+}

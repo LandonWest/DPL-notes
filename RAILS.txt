@@ -1,0 +1,145 @@
+Alphabet Soup of the Web
+_________________________
+
+Interwebz
+
+HTTP & DNS
+__________
+
+Hypertext transfer protocol. (think FedEX)
+Domain Name System. computers that turn your domain name in to numbers and back again.
+Domain Name. Your actual website's name.
+
+http://www.yourcoolwebsite.com
+
+http:// = the protocol
+www = subdomain
+yourcoolwebsite = domain name
+.com = TLD top level domain
+
+IP Address - the physical location of the domain address (ex. 221.186.184.68)
+             more than one website can have the same ip address because the same
+             machine hosts multiple sites.
+
+HTML - CSS - JS
+________________________
+Hyper Text Markup Language
+Cascading Style Sheets
+JavaScript
+
+
+RDBMS
+______
+Relational Database Management System (the database) - a place to put your data.
+
+essentially looks like a spreadsheet
+
+WebServer
+_________
+NGINX - a webserver program. There's a buch of others, too
+Webserver- a program that will send files from your website server to someone's browser.
+
+
+Learning Resources:
+___________________
+w3schools.com
+teamtreehouse.com
+codeschool.com
+dochub.io
+join a User Group in your city
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+A Bit About RAILS
+________________________________________________
+website vs. web application
+
+website - is typically static, uses html/css and javascript. A brochure/billboard site.
+web application - dynamic. does stuff like gmail, facebook, amazon.
+
+Rails-
+is a fullstack web application framework. It's also a ruby gem.
+Sinatra is Not a fullstack web app framework, it's just a DSL.
+Rails started in 2004 by DHH (David H. Hanson) for Basecamp
+
+Full-Stack - from database to what people see on the site, and everything in-betwen.
+Framework- tons of code already written to make you lazy
+
+Rails lets you make applications quick, and easy. (people don't really say "ruby
+  on rails" anymore. It's a Ruby developer who uses Rails)
+
+Sites that use (at least some)Rails:
+Github, YP, RailsRumble, Chow, Heroku, Funny of Die, Bleacher Report, Groupon, Hulu,
+AirBnB, Twitter(switeched to Scala, uses very small portion of Rails now), LivingSocial,
+SoundCloud, Shopify, SlideShare, Indiegogo, GitHub, BaseCamp,
+
+Why do startups use Rails?
+1. fast prototyping
+2. quick deployment
+3. easy iterations
+4. less times saves money
+5. open source is cheap
+
+a Php dev and a Rails dev with the exact same skill level, the Rails dev will finish
+2 weeks sooner, guaranteed.
+
+the Ruby community is a lot stronger than many other languages. Rails devs tend to
+ be more coffee shop, cutting edge, hipster vs. the php W.o.W. bedroom dwellers.
+____________
+NodeJs
+    Express, Sails
+Python
+    Django, Grok
+PHP
+    Cake, Code Ignitor, Fuel, Symfony
+___________
+MVC
+M- Model
+V- View
+C- Controller
+
+Organization, put things where they belong, and they'll magically just work.
+
+________
+CoC
+Convention over Configurization
+
+
+
+
+________________________________________________________________________________
+CREATING A NEW RAILS PROJECT:
+________________________________________________________________________________
+
+> rails new project_name   to create a new rails project
+
+Atom> creat .ruby-version (2.1.2) and .ruby-gemset (project name)
+
+> bundle                   make sure to cd out and back in after
+
+> rails generate scaffold Task name:string description:string completed:boolean
+
+> rake db:migrate
+
+> rails s                  to start the rails server
+
+> rake routes              shows you what pages are available to go to. you can
+                           also do this in the browser when you type in a nonexhistent
+                           path (localhost:3000/nonexis)
+
+Atom> Cmd T - search for route.rb
+  add root 'tasks#index'  This routes your home page to 'tasks' instead of the rails placeholder.
+
+
+
+
+> rm -rf directory_to_delete/     THIS WILL DELETE YOUR DIRECTORY PERMANENTLY!!!
+
+
+________________________________________________________________________________
+
+>rails destroy controller static_pages        Will delete something you didn't want to create...
+
+from a new branch:
+
+>rails generate controller static_pages home about contact_us
+    this created static erb pages named home.erb, about.erb, and contact_us.erb in the app-views dir.

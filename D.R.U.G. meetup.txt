@@ -1,0 +1,65 @@
+ben egget- D.R.U.G
+matt murray- myebiz for 1 year, ruby,
+paul baker- red hair, ruby since 2010,, startup Subconnect, hiring rails devs
+george south- ruby for 4-5 years, O.c Tanner, hiring senior devs
+josh richardson- washington, gave me ride to pub, glasses, red hair
+tyler kern- neumont university, glasses
+rod davis- neumont university, black
+quintin adam- ruby for 6months, contract work, glasses, sat next to at pub
+cody stringham- graphic design, big beard, changing to web dev, freelance
+claron twichle- started in 80s, forTran, semi-retired, hack in ruby for fun
+chris anderson- former devpoint, had job, didn't
+dave - Endio, ruby, many years
+________________________________________________________________________________
+Developer tools and APIs
+
+Ben Egget, Adobe edge inspect
+  alows you to keep your tools in synce among multiple devices in real time.
+  (inspect element- must have for web devs!)
+  Pow- a web server for dev
+  xip.io
+
+George South, rspec
+  unit test, your testing one specific thing like an object or class
+  integration test, how does one object interact with everything else
+
+  Capybara, a tool for ...
+
+Paul Baker, pry and better-errors
+  both are gems
+  better_errors -
+  pry -
+
+Quintin Adam, unGit
+  a visual representation of git, used as a way to see whats happening in your
+  app especially when working on projects with a lot of contributors.
+
+  shows you all commits and branches in a visual display and lets you add or
+  change commits from its interface
+
+Cody Stringham, window resize api, Window Resizer, Open-As Popup
+  resize windows from browser to be the size of target device, like iphone
+
+Claron Twichle, GitHub api
+  if you want to learn how to document stuff and make tutorials on how things work,
+  look at the github api.
+
+Tyler Kern, mac OSX 10.10
+  new features of OSX Yosemite
+
+Josh Richardson, Kimono
+  turn websites into structured APIs from your browser in seconds
+
+George South, debugger
+
+Paul Baker, continuos integration
+
+Jason, Pianobar - command line tool for music
+  uses homebrew,
+  brew instal pianobar
+  lets you stream your pandora stations from the terminal, you can do everything
+  you can do in pandora
+
+Ben Eggett, X-ray Rails
+  kinda like inspector, but shows you the different rails elements on a webpage
+  super nice if you've inherited someone else's code and don't know where everything is.
