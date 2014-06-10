@@ -111,8 +111,9 @@ CREATING A NEW RAILS PROJECT:
 ________________________________________________________________________________
 
 > rails new project_name   to create a new rails project
+> cd project_name          cd into new project
 
-Atom> creat .ruby-version (2.1.2) and .ruby-gemset (project name)
+Atom> create .ruby-version (2.1.2) and .ruby-gemset (project name)
 
 > bundle                   make sure to cd out and back in after
 
@@ -123,7 +124,7 @@ Atom> creat .ruby-version (2.1.2) and .ruby-gemset (project name)
 > rails s                  to start the rails server
 
 > rake routes              shows you what pages are available to go to. you can
-                           also do this in the browser when you type in a nonexhistent
+                           also do this in the browser when you type in a nonexistent
                            path (localhost:3000/nonexis)
 
 Atom> Cmd T - search for route.rb

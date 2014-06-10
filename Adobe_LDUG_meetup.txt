@@ -1,0 +1,48 @@
+Adobe meetup
+
+Michael Ries- Money Desktop, Provo
+___________________________________
+ProTips:
+-System Metaphor, -kent beck
+-Talk out Loud to multiple different audiences
+-Intentional Abstraction- abstract things with multiple layers
+-Draw Big/ draw small
+  1.red 2.green 3.refactor
+-Literate Programming, give me a narrative
+-Make Up Stories
+-Iterative Refinement, don't try to get the whole system write on the first try
+-Sleep On It
+
+"Duplication is far cheaper than the wrong abstraction" -sandi metz
+
+
+Dave Brady- Ruby Rogue webcast
+_______________________________
+Exploration mode (find stuff out) surprise = delight
+Execution mode (get stuff done) surprise = dismay
+
+we are prone to getting stuck refining our execution when we think we're exploring
+
+twoproblems.com
+
+If you're in execution mode you are wired to discount the benefits of exploration
+
+Think Fast Think Slow -book
+
+example of the paperclip
+
+4 Ways To Break Out of the Trap:
+_________________________________
+PLAY  whenever you get stuck, stop and do something creative etc. Because there's
+      no end goal you can't say you've done it wrong. Vulnerability.
+      Inovation Games (look up online). Music.
+
+      William James (psychologist)- when you start out everything is white
+      Robert Conway's Game of Life
+
+      NOPS - notice the trap, own it, push into it, stay with it
+
+
+
+
+*follow on twitter - esparkman

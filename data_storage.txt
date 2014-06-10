@@ -1,0 +1,241 @@
+DATA STORAGE:
+
+Storage Mediums:
+File system - its slow
+Memory - its ridiculously fast, but its not permanent (90% of twitter is on memory)
+Database - programs that store data. Not as fast as memory but a lot faster than
+            filesystem. This is the most stable way of storing info. Also more secure.
+
+Database Types:
+SQL (sequel) - structured query language
+NoSQL -
+Graph -
+
+SQL: optimized for write ability
+__________________
+SELECT*                      (select all of the columns from the languages table)
+FROM 'languages'
+WHERE 'languages.name' = "Ruby"      (table has a name column)
+LIMIT 1
+ORDER BY 'id' DESC;          (table has an id column)
+
+Common SQL DB:
+____________________________
+MySQL - ("my S Q L")
+PostgreSQL - ("postgres ql")
+SQLite3 - ("sequel lite")
+SQLServer - ("sequel server") Proprietary Microsoft, $20K, large enterprise
+
+
+MySQL - users: facebook, flckr, linkedin, wordpress, youtube, wikipedea, vimeo, tumblr, etc.
+        Can potentially handle 80million inserts/second!
+
+PostgreSQL - users: etsy, penny arcade, skype, apple, github, fujitsu, lots of startups
+             Is just about as fast as MySQL but has a lot more functionality.
+    Features:
+        -HStore - basically a giant hash(key, value store). HStore lives in memory.
+                  allows for scaling.
+        -GIS Geospatial - allows you to store latitude and longitude. (and show
+                  all restaurants within a 5 mile radius, etc.)
+        -Full-text search - index a particular column to read the data faster. Find
+                  all blog posts that may contain these words or phrases.
+        -new columns! - most common columns for both MySQL and PostgreSQL(datatype):
+                        string, text, datetime, boolean, date, time, integer, float.
+                  Specific to PostgreSQL - array
+___________________________________________________________________
+NoSQL - optimized for read ability
+
+        db.find({name:
+        'Ruby'}).limit(1).order('name');
+
+        uses javaScript. is non-relational database, but is a lot faster than SQL
+        relational databases. Good choice if you need non-relational data.
+
+Common NoSQL DB:
+__________________
+CouchDB- users: some facebook aps, lots of Euro sites, some people in SanFran
+MongoDB- users: Tabeso, stripe, mailbox, expedia, parse, linkedin, eharmony, mtv,
+                banjo, github, ebay, codecademy, Eventbright
+RethinkDB-
+
+Common Graph DB:
+__________________
+Neo4J - a series of Nodes(circle) and Edges(line) ()----()   any social media platform
+                                                        |\    will likely use this.
+                                                        | \    "you know Landon, you
+                                                       ()  ()    should also add Ty."
+
+Oracle Spatial -
+
+Titan -
+
+
+
+
+
+________________________________________________________________________________
+Creating a new rails app with custom postgreSQL database:
+________________________________________________________________________________
+
+rails uses SQLite by default, by adding -d flag we can specify the db we wanna use.
+> rails new elephant -d postgresql
+
+add host: localhost  to the database.yml file under developer:
+
+> rake db:create      to create the (custom) database
+
+> rails generate scaffold Animal name:string breed:string age:integer species:string
+
+> rake db:migrate      this syncs up the rails app and the database
+
+> rails console    (ruby's sandbox is irb, Rails's sandbox in rails c)
+  > Rails.env
+  >
+
+
+________________________________________________________________________________
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+SQL is the language a database uses to read and write information.
+
+> psql -d elephant_development        to get into the postgres db console
+> \q                        to get out of the db console
+> \d          to see what tables exist for the db
+
+   (whenever you create objects, make them singular, because rails turns them
+     plural in the table. ex. Animal -> Table : Animals)
+
+>  \d animals       to describe the table
+
+MODIFIER
+You can specify "not null" as a modifier so that you Have To enter something into that cell.
+       (ex. you can't leave the name or email field blank)
+       (ex. not null default nextval('animals_id_seq'::regclass) ...
+           "default nextval" - lets you leave the default in)
+
+TYPE
+character varying(255)     You can put in any unicode character, up to 255 characters.
+                            You can change this to only allow 50 characters if you want.
+                            Or you could put a minimum length, or only a-z, etc.
+
+INDEX
+  this speeds up querying for us
+
+
+> select * from animals;     select all (columns) from the animals table
+
+When doing a query in SQL there are really only 4 commands you worry about:
+
+C.R.U.D.
+
+Create
+Read
+Update
+Delete
+
+> select * from animals where id=3;     this returns all the columns for all the
+                                      rows that match this query (in this case, id3)
+> select * from animals where name='Bosco';      select all the columns from animals
+                                      table, where name is 'Bosco' *single quotes!
+
+doing a "like" query if you don't know the Exact name:
+> select * from animals where name like 'Bo%';      the name begins with 'Bo'
+
+-or- you can put the % at the end if you know what it ends with ex. '%co'
+-or- you can put the % on either side of what you know it contains ex. '%os%'
+
+  *the query is case sensitive
+
+> select * from animals where lower(name) like 'bos%';     makes everything lowercase
+                                                              then queries that.
+
+> select count (*) from animals where lower(name) like 'bos%';
+                                    -tells you the number of rows for that query
+
+> select count(*) from animals;       this returns All the rows
+
+> select name from animals;       shows you all the names from animals
+
+> select name, age from animals where age >= 3 and age <= 5;
+
+> select name from animals where extract(hour from created_at) < 10;
+     -we want to know the name of everything created less than hour 10.
+________________________________________________________________________
+HOW TO WRITE TO RECORDS:
+
+> DELETE FROM animals WHERE id=11;        this deletes id 11
+
+> UPDATE animals SET name='Billy' WHERE id=8;       update a name for id 8
+
+> UPDATE animals SET species='goat' WHERE id=8;
+
+> update animals set breed='mountian', age=3 where id=8;     change two at a time!
+
+> INSERT INTO animals(name, breed, age, species) VALUES('Jeremy', 'Crazy Male', 32, 'Human');
+
+> update animals set created_at=now(), updated_at=now() where id=11;   updates the timestamps
+
+_________________________________
+
+> select name, age from animals where lower(name) like 'animal%' limit 1;
+      -this will limit it to return only one record
+
+> select name, age from animals where lower(name) like 'animal%' order by age desc limit 1;
+      -same thing, but orders them in descending order by age column
+      -can also order by 'asc' ascending order
+      -can also enter 'offset 1;' which is the second oldest animal
+
+_____________________________________________
+MAKE A NEW TABLE:
+
+> CREATE TABLE cars (
+> id bigserial primary key,
+> make varchar(20) not null,
+> model varchar(20) not null,
+> year integer,
+> created_at timestamp,
+> updated_at timestamp,
+> condition text
+> );
+
+Table Created!
+
+________________________
+
+foreign and primary keys
+
+______________________________________________
+ADD A COLUMN:
+
+> ALTER TABLE cars ADD COLUMN for_sale BOOLEAN DEFAULT true;     add a new column
+> DROP TABLE cars;        deletes the table!
+
+______________________________________________
+
+
+
+> select avg(year) from cars;        gives you the average year of your cars
+> select sum(year) from cars;        total
+
+> select * from cars order by id asc;
+
+________________________________________________________________________________
+HOW TO JOIN TABLES:
+
+> SELECT * FROM students INNER JOIN cars ON cars.student_id=students.id;
+
+  basically: take the 'students' table, join it with the 'cars' table, but put
+    the student_id column from cars and join it with the id column from students
+
+
+___________________________________
+ex. updating students with a birthday column and converting the string to a timestamp:
+
+> UPDATE students SET birthday='1989-09-03'::timestamp WHERE id=11;
+___________________________________
+
+ex. > select * from students where extract(year from birthday) between 1980 and 1990;
+___________________________________
+
+ex. SELECT * FROM students WHERE first_name IN ('Jason', 'Justin', 'David');
+___________________________________
