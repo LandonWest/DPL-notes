@@ -239,3 +239,11 @@ ___________________________________
 
 ex. SELECT * FROM students WHERE first_name IN ('Jason', 'Justin', 'David');
 ___________________________________
+
+
+________________________________________________________________________________
+3 TYPES OF TABLE RELATIONS:
+
+1 - 1 (one to one)  one item in one table belongs to one item in another table
+1 - M (one to many)  many objects in table B belong to one object in table A
+M - M (many to many)  ex. many students to many instructors

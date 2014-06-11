@@ -144,3 +144,109 @@ from a new branch:
 
 >rails generate controller static_pages home about contact_us
     this created static erb pages named home.erb, about.erb, and contact_us.erb in the app-views dir.
+
+
+________________________________________________________________________________
+
+RAILS and POSTGRESQL project:
+
+MODEL (from MVC)
+
+A model is the thing you're modeling after some sort of real-world object.
+All models are ruby classes.
+model= Headset (singular)...
+...makes-->  table column= Headsets (plural)
+
+
+
+> rails new sandox -d postgresql         to create a new project with rails and postgresql
+
+> rails generate model Animal
+
+config directory, database.yml, put 'host: local host' under development
+
+> rake db:create
+> rake db:migrate
+
+
+
+
+> rake db:seed
+
+
+
+________________________________________________________________________________
+PREVENTING SQL INJECTION IN RAILS:
+
+Animal.where("LOWER(name) LIKE ?", "#{name}%")
+
+> Animal.where("birthday > ? AND name = ?", 1.year.ago, "Fluffy")
+  -or-
+> Animal.where("birthday < ?", 1.year.ago).where(name: "Fluffy")
+________________________________________________________________________________
+
+
+SCOPE:
+
+where you wanna run a specific query all the time and give that query a name.
+
+
+
+
+
+________________________________________________________________________________
+PRACTICE:
+
+Create a Model called Student with first_name, last_name, and state.
+
+
+> rails generate model Student first_name:string last_name:string state:string
+
+> rake db:migrate
+
+if you run into a problem you can do:
+>rake db:drop         this will drop (delete) your database
+>rake db:create       this will recreate your db from the migration files in rails
+
+migrations are only used to change the structure of your tables in the db, like columns
+
+
+
+Create a migration that adds favorite_color column to student
+
+> rails generate migration AddFavoriteColorToStudent favorite_color:string
+
+Add rows of students and all their column values
+(in Rails console)
+> Student.create(first_name: 'David', last_name: 'Nelson', state: 'Virginia', favorite_color: 'Blue')
+
+
+
+query commands in rails c:
+> Student.all
+> Student.where(favorite_color: 'Blue')    *this method returns all results as an array
+> Student.find_by_id(1)           *this method only returns the first result it finds
+
+
+
+
+
+
+________________________________________________________________________________
+MORE PRACTICE:
+1. Create a new project
+
+>rails new project -d postgresql
+
+2. Create a Model called Students with first_name, last_name, and state.
+3. Create a migration that adds a favorite_color column to your students table.
+
+>rails generate migration AddFavoriteColorToStudent favorite_color:string
+
+4. Create three students.
+    Practice using rails console to find specific objects
+
+>Student.create(first_name: 'Jason', last_name: 'Carter', state: 'Washington', favorite_color: 'Purple')
+
+http://guides.rubyonrails.org/active_record_querying.html
+________________________________________________________________________________
