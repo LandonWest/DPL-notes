@@ -152,6 +152,7 @@ RAILS and POSTGRESQL project:
 
 MODEL (from MVC)
 
+A model represents a database
 A model is the thing you're modeling after some sort of real-world object.
 All models are ruby classes.
 model= Headset (singular)...
@@ -190,8 +191,8 @@ SCOPE:
 
 where you wanna run a specific query all the time and give that query a name.
 
-
-
+animals = Animal.find_by_name('Fluffy')
+animals = Animal.find(1)         *find by id number 1
 
 
 ________________________________________________________________________________
@@ -228,10 +229,6 @@ query commands in rails c:
 > Student.find_by_id(1)           *this method only returns the first result it finds
 
 
-
-
-
-
 ________________________________________________________________________________
 MORE PRACTICE:
 1. Create a new project
@@ -239,6 +236,14 @@ MORE PRACTICE:
 >rails new project -d postgresql
 
 2. Create a Model called Students with first_name, last_name, and state.
+
+> rails generate model Student first_name:string last_name:string state:string
+
+2.5 Create a new database and migrate those changes to it:
+
+> rake db:create
+> rake db:migrate
+
 3. Create a migration that adds a favorite_color column to your students table.
 
 >rails generate migration AddFavoriteColorToStudent favorite_color:string
@@ -246,7 +251,61 @@ MORE PRACTICE:
 4. Create three students.
     Practice using rails console to find specific objects
 
->Student.create(first_name: 'Jason', last_name: 'Carter', state: 'Washington', favorite_color: 'Purple')
+>Student.create(first_name: 'Jason', last_name: 'Carter', state: 'Washington',
+  favorite_color: 'Purple')
 
 http://guides.rubyonrails.org/active_record_querying.html
 ________________________________________________________________________________
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@6/12
+
+CONTROLLERS: are ruby classes, but they're not used like classes
+
+Model-represents the db  (the model packs the order from the database)
+Controler-          (the 'people person dude' from office space) asks the model
+                     for information, then hands it off to the view
+View-is the pages you see (the customers)
+
+one model associated with one controller associated with several views
+
+This whole mvc structure is one 'Resource' such as 'Animal Resource', therefore
+  Animal Model, Animals Controller, Animals Views.
+A resource is just a concept, its not an actual object
+
+Then there is a collection of Resources
+When you do >rails g scaffold Animals    -you're telling rails to create the
+  Animals resource. But scaffold generates a lot of stuff you don't need.
+
+'Routes' how the url's are specified for the views talking to a particular controller
+
+ex.               Product Resource
+Product Model,  Products Controller,  Products Views
+
+/products (this is one of our routes)
+/products/:id (this is a specific product. has a 'params id', this route is just like in sinatra)
+
+
+________________________________
+@6/12, 9:50 started new project
+@6/12, 10:11 'rake db:seed'
+
+@10:35 >rake routes
+
+Controller#Action:
+methods written inside a controller are called 'actions'
+
+URI Pattern:
+anything in ()s is optional. :id is a placeholder for whatever value is going to be there
+
+Verb:
+Get, Post, Delete(completely remove a resource), Patch(take a resource and update
+  one or two attributes about it), Put(youre updating the entire resource)etc.
+
+"REST" (Representational state transfer)
+  'restful resource', 'restful route' etc.
+
+Prefix:
+a prefix to a method that will return a string.
+for each prefix you get two methods you can use: _path (this is a relative path),
+  _url (this is an absolute path) (ex. products_path)
+  ex. edit_product_path(1)  1 is the value of :id
