@@ -1,0 +1,63 @@
+APPLICATION PLANNING
+________________________________________________________________________________
+
+1. Name the app
+2. Describe what the app does in a few words (i.e. what problem is it trying to solve)
+3. Create your feature list
+4. Sort the feature list to create the MVP
+5. Sort the remaining features to create subsequent releases
+6. Plan out all MVP objects (i.e. models and attributes)
+7. Gather list of tools needed to build MVP
+8. Discuss UI and user flow with mocks (mock-up)
+
+________________________________________________________________________________
+
+
+
+1. Give your application a name. Get a visual representation of what your app is
+2. What is the purpose of the app? What is the goal? What are you trying to solve?
+
+M.V.P - Minimal viable product. The minimal amount that will make the app what its
+        supposed to do. It doesn't do very much, and it's not very pretty, But it works!
+
+When you're doing app development, you try to ship new versions as much as possible.
+
+Application Versioning - M.m.B  major, minor, bug patch.  (Ex. Ruby 2.1.2)
+        Major- brand new functionality, major overhaul
+        minor- interface looks identical, but added new feature
+        bug-patch- fixed a bug (speed, security, bug)
+
+Create a feature list:      Create an MVP list      1.1.0     2.0
+______________________      __________________     _______   ______
+
+
+Once you've created your lists, you can start making a timeline for each list.
+*Whatever amount of time you Think it will take, Triple it.
+
+Start planning out the code for your MVP:
+
+  Models
+_____________________________________
+ user - name :string
+      - email :string
+      - password :string
+      - active :boolean, default true
+
+ status update
+       - belongs to :user
+       - text :text
+       -post time :datetime
+
+
+  Tools
+____________________________________
+ relational database
+ Rails
+
+
+
+
+Draw out what you want it to look like on a whiteboard
+Plan your routes for different pages
+
+When creating a mock-up there are several tools you can use... ex. Balsamiq, InkScape

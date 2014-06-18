@@ -1,0 +1,18 @@
+BOOTSTRAP:
+ A framework to make getting projects started faster.
+ twitter bootstrap, foundation bootstrap, etc.
+
+Twitter Bootstrap:
+ A framework that gives you pre-made css and javascript templates.
+ -design for mobile first
+ -Responsive Design= your site will scale between mobile to tablet to desktop seamlessly
+   CSS media query- allows us to specify how we want things to act.
+
+ -built atop a grid system
+ -12 columns
+ -each row has to equal 12, but you can nest them down as far as you want
+
+ Typography
+   google.com/fonts   for new and different fonts
+
+ rubygem bootstrap-sass
