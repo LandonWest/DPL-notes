@@ -289,7 +289,7 @@ ________________________________
 @6/12, 9:50 started new project
 @6/12, 10:11 'rake db:seed'
 
-@10:35 >rake routes
+@10:35 >rake routes  -you type this into terminal to see what routes and actions are available
 
 Controller#Action:
 methods written inside a controller are called 'actions'
@@ -309,3 +309,13 @@ a prefix to a method that will return a string.
 for each prefix you get two methods you can use: _path (this is a relative path),
   _url (this is an absolute path) (ex. products_path)
   ex. edit_product_path(1)  1 is the value of :id
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+if it is Get in routes it will have an actual page, all others will either need to be redirect_to or
+
+
+
+
+RAILS 'HELPERS' are a man's best friends. Look them up on ruby.org documents

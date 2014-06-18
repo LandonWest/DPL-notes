@@ -26,7 +26,7 @@ MAKING A NEW LOCAL (GIT) AND REMOTE (GITHUB) REPOSITORY and adding a file to it:
 DONE!
 
 git push -u origin master (the -u tells git to remember the parameters, so next
-                            time we can simpy run push.)
+                            time we can simply run push.)
                           (the remote repository is called "origin")
                           ("master" is the default branch)
 
@@ -36,7 +36,7 @@ WORKING ON A FILE; ADDING, COMMITING, and PUSHING IT TO GITHUB
 2. git add filename.rb    (to specify file to add to staging area.) (You do this
     in the terminal from the local repository (directory) that your file is in.)
 3. git commit -m "description of changes"    (to note what changes you made and
-    are commiting.) (Use present-imperitive tense. ex. "add new feature")
+    are committing.) (Use present-imperitive tense. ex. "add new feature")
 4. git push origin master    (to update the remote repository on github.com)
     (change "master" to "branch_name" to push to any other branch besides master.)
 DONE!
@@ -49,7 +49,7 @@ DONE!
 git status  Shows what files have changed in your local working directory.
 git log     Shows all commits, starting with the newest.
 
-git add .         (This will add all files at once instead of having to add them
+git add -A         (This will add all files at once instead of having to add them
                     individually)
 git add --all         (This should add all CHANGED files at once instead of
                         individually)
