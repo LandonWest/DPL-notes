@@ -1,0 +1,52 @@
+Authorization
+
+Authorization vs. Authentication
+
+Authorization- if you're signed in as a user with a certain level account, give
+  them a certain level of features.
+
+NameSpaces:
+
+tabeso.com/portal
+tabeso.com/admin
+
+
+_________________________________
+
+t.integer :role, null: false, default: 0            <-add a role, 0 means cutomer
+
+create views last
+
+
+
+
+
+
+AUTHORIZATION
+
+Creating New User in
+rails c
+
+> user = User.new
+
+2.1.2 :002 > user.name = 'Landon'
+ => "Landon"
+2.1.2 :003 > user.email = 'landonwest@example.com'
+ => "landonwest@example.com"
+2.1.2 :004 > user.password = '32viperz'
+ => "32viperz"
+2.1.2 :005 > user.password_confirmation = '32viperz'
+ => "32viperz"
+
+2.1.2 :006 > user.role = :admin
+ => :admin
+
+2.1.2 :010 > user.confirm!
+
+2.1.2 :007 > user.save
+
+2.1.2 :011 > user.persisted?
+ => true
+
+2.1.2 :012 > user.admin?
+ => true

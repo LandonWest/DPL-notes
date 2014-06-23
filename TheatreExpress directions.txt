@@ -1,0 +1,143 @@
+1. TheatreExpress
+2. Find theaters and see what plays are happening at those along with times and so on
+3. feature list:
+
+FEATURES:
+________________________________________________________________________________
+-user account - to store:
+                favorite theaters
+                favorite plays
+                user location
+-search feature - search for theaters or plays within radius of and address
+
+-Display results of theatre showing:
+                            List all theaters within specified radius
+                            address of theaters on map
+                            rating of each theatre
+                            brief description/history of each theatre
+                            rating/review of each theatre
+                            pictures of the theaters
+                            all plays showing at that theatre in a specific timeframe
+-Display results of plays showing:
+                            Name of play
+                            Description of play
+                            List of theaters in a geographical area that host that play
+                            Date and time that play is showing in that theatre
+                            ratings/reviews of that play from that theatre
+                            pictures/videos of that play from that theatre
+
+-calendar that displays the plays happening in your area for the month, lets you
+  link events to your personal calendar (google cal, iCal)
+
+-Buy tickets for a play you want to see
+
+-Post to facebook that you will be going to see a play at a theatre
+
+-Leave ratings for plays and theaters
+
+
+4. MVP:
+________________________________________________________________________________
+search function:
+          -Type in your area code,
+          -Lists theaters within your area code and their addresses
+          -Click on a theatre to see what plays are currently showing there by date/time
+          -Click on a play to see its description
+
+5. Versions
+________________________________________________________________________________
+
+ TheatreExpress 1.1.0
+        -Add map graphic for each theatre address
+        -Add ratings for each theatre
+        -Add pictures of each theatre
+
+  TheatreExpress 1.2.0
+        -Add search-by-play feature, displays all theaters within search radius that have that play
+        -Add ratings and reviews of theaters and plays
+        -Add pictures and video links of plays
+
+  TheatreExpress 1.3.0
+        -Add User Account feature
+        -create username, password, and personal details/picture
+        -save favorite theaters, plays, and user location for future searches
+        -leave ratings for plays and theaters
+
+  TheatreExpress 1.4.0
+        -Add facebook post functionality, post to facebook when you're going to
+          see a play, also post what you thought of it after.
+
+  TheatreExpress 1.5.0
+        -Add secure shopping cart
+        -after searching for plays, ability to buy tickets from chosen theater and
+          print them from your computer or pick-up at will call.
+
+  TheatreExpress 1.5.1
+        -fix bug that broadcasts user's credit card information on sites in Croatia
+
+  TheatreExpress 1.6.0
+        -Add calendar feature to user account. This allows you to save plays to ical etc.
+
+
+
+
+6. MODELS AND ATTRIBUTES:
+________________________________________________________________________________
+
+  Theatre
+    -has_many :plays
+    -name :string
+    -address: string
+    -website :string
+    -phone number :string
+    -description :text
+
+  Play
+    -belongs_to :Theatre
+    -name
+    -description
+    -date showing
+    -time showing
+
+
+7. TOOLS:
+________________________________________________________________________________
+  Rails
+  postgresql
+  various APIs
+
+
+
+
+
+
+
+
+
+
+
+
+DIRECTIONS
+
+-On home page, there should be a search form. does not need to actually work
+-The home page should list the top theaters (not all of them) you can make that up
+-There should be a link to view ALL theaters
+-Clicking on a theater should show more info about that theater and list ALL the
+  plays for that theater
+-Style the app. No default black text on a white background
+
+hints:
+
+# scope the plays controller to a theater
+resources :theaters do
+  resources :plays
+end
+
+# using a before_action
+class SomeController < ApplicationController
+  before_action :find_thing
+
+  private
+  def find_thing
+  end
+end

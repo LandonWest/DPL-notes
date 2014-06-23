@@ -1,0 +1,24 @@
+TESTING
+
+TDD - test driven development           \  these are the same thing
+BDD - behavior driven development       /
+
+You should write your test first before you even write any code.
+  then write some code and test it, and keep writing code until it passes the test.
+
+'duck-typing' - if it walks like a duck and it talks like a duck, chances are its a duck.
+
+Red - Fail, write a test that fails
+Green - Pass, make only enough code for it pass
+Refactor - Improve code quality. Smaller, faster, cleaner code
+
+Unit Testing - individual units of source code (like testing your models in rails)
+
+Functional Testing - a quality assurance process, a type of black box testing (like
+  testing your controller flow, Can a user sign in and update their account? etc.)
+
+Integration Testing - make sure all the different parts are connecting properly
+
+
+
+  *side note     [1, nil, 3].compact     will equal [1, 3]   .compact takes out the nil's. 

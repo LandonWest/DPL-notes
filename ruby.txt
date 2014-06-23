@@ -831,13 +831,13 @@ class Router
 end
 
 def debug(*data)                The asterisk (*) is called a splat and says you
-  data.ech do |datum|              can have as many arguments as you want.
+  data.each do |datum|              can have as many arguments as you want.
     puts datum
   end
 end
 
 r = Router.new
-r.get("thing", {protocaol: 'https'}) do
+r.get("thing", {protocol: 'https'}) do
   puts "inside block"
 end
 
