@@ -61,3 +61,26 @@ Draw out what you want it to look like on a whiteboard
 Plan your routes for different pages
 
 When creating a mock-up there are several tools you can use... ex. Balsamiq, InkScape
+
+
+_____________________________________________________
+
+Git Flow for Team Projects
+
+create repo
+rails new /// -d postgresql
+initial commit
+push
+
+add contributors
+
+issues
+  tags (bug, question, or create your own tag like 'ask Jeremy', etc. You can add
+    an issue for features that you want to implement but can't yet)
+  assign an issue to a specific person
+
+git checkout -b newbranch
+
+make fixes, make sure tests pass, ALWAYS pull first (from the correct branch) then push to branch
+
+merge back to master branch

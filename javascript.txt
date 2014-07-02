@@ -115,3 +115,89 @@ DOM ("document object model")
 window.onload = function() {
   var images - document.querySelectorAll('.col img');
 }
+
+
+
+________________________________________________________________________________
+JAVASCRIPT Frameworks
+________________________________________________________________________________
+
+jQuery - 'write less, do more' It's fast and light, comes by default in Rails
+jQuery mobile - optimized for mobile, structures your markup
+
+prototype - built by rubyists, structured very similar to ruby. It is kinda bulky
+            There's an add on called 'animus' that lets you do basic animations
+
+MooTools - really good for heavy animation stuff
+
+YUI - built by yahoo. open source js and css library
+
+ChocolateChip UI - ? Native look for web apps, ios or android
+
+
+________________________________________________________________________________
+
+window.on_load
+document.on_ready
+
+jQuery function = $()
+
+when using jQuery you dont have to say 'on' for events like onclick and onready etc.
+
+ex.
+
+$(document).ready(function() {
+  // this runs when the document is ready
+  console.log('document now ready');
+});
+
+
+
+a 'timeout' fires after a certain amount of time
+
+a 'holdoff' will fire then wait a certain amount of time, then fire again
+
+
+jQuery gives us four functions to take html elements and put them into our website.
+-you have to have an html element to start
+
+before - inserts it above
+prepend - puts it internally at the top
+append - puts it internally at the bottom
+after - inserts it below
+
+________________________________________________________________________________
+
+PLUGINS
+________________________________________________________________________________
+
+Plugins are like ruby gems. To install, basically just require the .js file
+  99% of plugins will be in the doc ready function at the top of your page
+  find plugins on Jquery.com
+
+
+      <script src="jquery.js"></script>
+    <script src="jquery.lettering-0.6.1.min.js"></script>
+    <script>
+      $(function() {
+        $('.fancy_title').lettering();
+      });
+    </script>
+
+
+Alertify.js - allows you to have nice, pretty alerts
+jQuery Avgrund -
+iCheck - by default you cannot style checkboxes or radioboxes, the only way you can
+          do it is in javascript. iCheck will let you do that easily
+Long Press - you can hold down a key and a bar of accented options appears to choose from.
+jQuery File Upload -
+Complexify - assesses how complex passwords are.
+jQuery Knob - make touchable, draggable dials. (look like nest thermostats)
+pickadate.js - drop down menus of calendars and dates to pick from.
+Chosen - selections fields can't be styled unless you use js. This lets you do it easily.
+FancyInput - looks cool when you're typing stuff into search fields etc.
+typeahead.js - for autocomplete type stuff. Jeremy uses all the time.
+Parsley.js - form format validation
+SuperScrolloRamaa - does awesome text animations like bounce, wipe, fling etc.
+Cycle2 - does slidesh
+FullCalendar - used on beakr and lots of others

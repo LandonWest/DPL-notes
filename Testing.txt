@@ -21,4 +21,70 @@ Integration Testing - make sure all the different parts are connecting properly
 
 
 
-  *side note     [1, nil, 3].compact     will equal [1, 3]   .compact takes out the nil's. 
+  *side note     [1, nil, 3].compact     will equal [1, 3]   .compact takes out the nil's.
+
+_________________________________________________________________________________________
+
+Ruby and Rails come with MiniTest, although that's generally not what the community uses.
+TestUnit is a larger scale of MiniTest, some older apps have used this
+
+RSpec (www.rspec.info)
+
+  Javascript has 'Jasmine' which is very similar to RSpec
+  Cucumber is another one
+
+
+Kata - a martial arts routine that you do step by step until it becomes muscle memory.
+        there are thousands of these
+
+Code Kata - Take a small bit of code and write it over and over and over until it
+            becomes muscle memory in solving a problem
+
+  ex. calculate shipping plus tax and order amount for anywhere in the world.
+  ex. ensure game character doesn't fall/walk through walls unless it's a fake wall. Ghosts can though.
+  ex. find results based off a search query
+  ex. Parse text file containing 2 million lines and create new text files broken into 10k lines w/new format.
+
+  *look up code Katas to solve online, then solve them over and over till you're a gangsta
+
+When programing, start with the smallest part possible
+
+
+RSpec Setup Steps:
+______________________________________________________
+
+1. create Gemfile with:
+
+  source "https://rubygems.org"
+  gem 'rspec'
+
+then bundle
+
+2. create spec_helper.rb
+
+  require 'rspec'
+
+  RSpec.configure do |c|
+    c.color = true                        #make the output colorized
+    c.filter_run focus: true
+end
+
+3. create app file
+
+  fizzbuz.rb
+    #write your program code in here
+
+5. create tests file
+
+  fizzbuzz_spec.rb
+
+  require_relative 'spec_helper'
+  require_relative 'fizz_buzz'
+
+  describe FizzBuzz, 'a fun drinking game' do
+    #actual tests
+  end
+
+_____________________________________________________
+
+when writing  methods in rspec use a '#' for a instance method or a '.' for a class method

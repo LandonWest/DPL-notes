@@ -954,3 +954,12 @@ layout.erb is not a page in itself of your website, but a file that holds the
 __________________________________________________
 Add a public folder to your main project folder
 Add a css folder inside public folder
+
+
+
+
+%w(a b c)     returns and array of strings ["a", "b", "c"]
+
+%i()    
+
+%q(hello "double" 'single')

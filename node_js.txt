@@ -1,0 +1,78 @@
+node JS
+________________________________________________________________________________
+
+a server-side implementation of javascript
+
+  javascript can only be ran on the client side inside of a browser or parser
+  node JS can only be ran on the server side
+  designed to be highly concurrent
+
+Ruby's concurrency really sucks. Does one thing, then the other thing.
+
+Javascript can run more than one thing at once, completely parallel
+non-blocking io
+real-time data without having to reload the page
+
+
+just like ruby has 'irb', node has 'node' which is a fully live node console.
+  to exit out - cntrl C, cntrl C
+
+{key: 'value'}  these are called objects in js, not hashes like ruby
+
+console.log('hello')  is the equivalent of 'puts' in ruby
+
+node modules are way different than ruby modules
+
+PRACTICE
+________________________________________________________________________________
+-Make a file with a capital first letter (ex. Person.js) this will basically work
+  as your 'class'
+
+// This creates a Person object
+exports.name = 'Landon';
+exports.age = 27;
+exports.hobbies = ['Ruby', 'Node', 'Music'];
+
+> var p = require('./Person');
+undefined
+> p.name
+'Landon'
+
+-Make a file (ex 'add.js') this file acts like a particular function
+
+module.exports = function(a, b) {
+  return a + b;
+};
+
+> var add = require('./add');
+undefined
+> add(1, 1);
+2
+________________________________________________________________________________
+
+Node Packaged Modules (NPM)  (like ruby gems)
+
+Express - sinatra inspired framework
+
+
+______________________________________________________________________________
+
+SAILS
+
+
+
+
+.json    javascript object notation, kinda like a .yml file. A plain text file with
+  a specific format to it. All languages understand .json so you can use it to talk
+  back and forth between rails and sails or other languages, etc.
+
+grunt    is js version of rails's 'rake' (ex. grunt db:create, grunt db:migrate)
+
+ejs  'embedded javascript', just like ruby's erb
+
+config/adapter.js  is where you specify which db to use, mysql is default
+
+
+To start sails server : sails lift
+
+sails console
