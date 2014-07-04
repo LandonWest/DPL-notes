@@ -201,3 +201,38 @@ Parsley.js - form format validation
 SuperScrolloRamaa - does awesome text animations like bounce, wipe, fling etc.
 Cycle2 - does slidesh
 FullCalendar - used on beakr and lots of others
+
+________________________________________________________________________________
+
+javascript 'Manifest'    compiles all the script tags into a single file and requires
+                          them all at once, instead of doing 30 seperate calls from
+                            the main html page, where if one fails, all the script
+                              tags below it will fail to load also. Rails also minifies
+                                the scripts by default, speeding things up for you.
+
+
+in rails-
+
+Example:
+
+application.js
+_______________________
+//= require jquery                    -always comes first
+//= require jquery_ujs                -always comes second
+//= require bootstrap                 -this is the bootstrap.js file from bootstrap-sass
+//= require_self                      -require the file we're in now; always last file
+
+
+________________________________________________________________________________
+
+AJAX
+________________________________________________________________________________
+asynchrones javascript and xml
+
+Allows you to make asynchrones transactions within your application.
+(one at a time is a synchrones transaction)
+
+you can move the user along without having to wait on processes to finish
+
+without concurrency your website will crash when more than a few people try to access
+your page at once, because the load times will be more than 30 seconds
