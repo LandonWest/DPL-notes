@@ -1,0 +1,157 @@
+Hosting and deploying code
+
+Production environment -
+
+  OS may be different in production than in development
+  assets will be compressed so they'll load as quickly as possible
+  Capistrano-rails, gem for deployment to certain types of servers.
+
+
+Hosting
+
+  -Shared   This will be the cheapest. Also the worst option. You can't install gems/bundle to the machine,
+              you share the exact same machine and resources as everyone else. HostGator has excellent customer serv.
+  -VPS (virtual private server)   a company will take an actual machine and use virtualization software
+                  to subdivide into separate vm's and sell their usage to customers.
+  -Dedicated   The company gives you the entire machine to yourself. Good if you need ridiculous security.
+  -Coud    Your resources are broken up onto a bunch of different servers. You may or may not have control
+            over the specifics of the machines. Will usually charge for the amount of resources you're using
+            on a per/hour rate. So you pay more at peak times. You can 'spin-down' the server at times when
+            you know you won't have any traffic and not pay for those hours when your site is offline.
+            Amazon uses really cheap, crappy hardware; Rackspace uses much better hardware
+
+
+            EngineYard - originally straight Ruby hosting. Will optimize your server and code to make your
+                          application run faster. Has option of scheduled shut-offs. Downside is they use
+                          EC2 wich is Amazon's servers. You pay extra for the pro's to manage the system for you,
+                          but it's still cheaper than hiring a dedicated devops guy.
+
+            Heroku - originally straight Ruby hosting. Headed by Yokihiro Matsumoto. It's completely FREE for
+                      small apps like Beakr and goes up in price from there. Downside is Heroku uses Amazon EC2, if
+                      no one uses the site for more than 30 min, it will completely shut down the server and machine,
+                      so it will take a long time to start back up. You can pay more to have experts manage your crap.
+                      Another downside is Amazon contracts Heroku to only use the servers on the east coast with the
+                      cheapest machines, this will add 250ms latency to your app (which is really slow). Another downside
+                      is it randomizes server selection for requests instead of sending requests to the least utilized server.
+
+
+            Developers with DevOps skills can easily add 20K to their salary
+
+
+
+SETTING UP HEROKU
+________________________________________________________________________________
+Install Heroku
+
+Add to Gemfile of your app:
+
+  > gem 'rails_12factor', group: :production
+
+  at the top under source:
+  > ruby '2.1.2'
+
+Make sure to bundle!
+
+In Console:
+
+>foodie(master)$heroku login
+Enter your Heroku credentials.
+Email: landonwest5@gmail.com
+Password (typing will be hidden):
+Could not find an existing public key.
+Would you like to generate one? [Yn] Y
+Generating new SSH public key.
+Uploading SSH public key /Users/landonwest/.ssh/id_rsa.pub... done
+Authentication successful.
+foodie(master)$heroku auth:whoami
+landonwest5@gmail.com
+
+
+  this matches up the public key on heroku with your private key on your machine to authenticate you
+
+
+>foodie(master)$heroku create
+Creating still-harbor-8849... done, stack is cedar
+http://still-harbor-8849.herokuapp.com/ | git@heroku.com:still-harbor-8849.git
+Git remote heroku added
+
+
+  this is your new url to your application
+
+
+>foodie(master)$git push heroku master
+
+  this deploys the app to heroku
+
+
+
+The local db is NOT the same as the production db
+
+
+>foodie(master)$heroku run rake db:migrate
+
+
+
+>foodie(master)$heroku logs -t      (to continually update your heroku server logs)
+
+
+To fix a
+
+git add -A
+git commit -m ""
+git push heroku master
+
+
+
+To get into your console that's connected to the production database:
+
+>heroku run console
+
+>irb(main):001:0> Rails.env
+=> "production"
+
+
+
+
+Heroku.com
+  your app
+
+  Dynos
+    -web
+    -worker
+
+
+how you run commands for heroku is very similar to how you run local commands:
+>heroku run .....
+>heroku run rake db:migrate      etc.
+vs.
+>rake db:migrate
+________________________________________________________________________________
+Ruby Web Servers:
+
+WebBrick
+Thin
+Unicorn
+Puma
+Passenger
+________________________
+
+
+TO add Thin
+
+add to gemfile and bundle
+
+gem 'thin'
+
+
+add a new file called 'Procfile' to your main app directory
+put this in it:
+
+
+web: bundle exec thin start -p $PORT
+
+
+Then:
+>git add -A
+>git commit -m ""
+>git push heroku master
