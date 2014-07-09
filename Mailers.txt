@@ -1,0 +1,111 @@
+EMAIL
+
+Mailers - act like controllers. have actions and views
+
+most common mailer is the user mailer, which handles emailing the user
+also common is the admin mailer, which emails stuff to the admin
+notification mailer, notifies different people
+
+> rails g mailer notification_mailer
+  (make sure to put _mailer at the end)
+
+app/mailers/notification_mailer.rb
+
+
+-create a new view file named after your mailer class
+
+
+
+in development mode it doesn't actually send emails
+
+
+Styling Emails:
+-most email clients don't support html5 or CSS3 or loading external files,
+  you have to use html4 and CSS2
+-you'll be using p tags, possibly div's, and tables
+-you'll have to do all your styles inline
+
+There are services for email testing, such as:
+  Litmus.com
+    -this boots up a bunch of different servers of email clients and emails you what
+      it will look like in each. This is called 'cross-platform testing'
+
+
+
+___________
+test/mailers/previews/notification_mailer_preview.rb
+
+
+
+STEPS:
+
+1. Generate mailer
+
+> rails g mailer user_mailer
+
+2. Open user_mailer
+
+  app/mailers/user_mailer.rb
+
+3. configure user_mailer
+  default from:
+
+4. create mailer action
+
+  class UserMailer < ActionMailer::Base
+  default from: "no-reply@myapp.co.uk"
+
+    def welcome(user_email)
+      @user_email = user_email
+      mail(to: @user_email, subject: 'Welcome to the club')
+    end
+  end
+
+5. make sure we have a view thats named the same as the action
+
+app/view/user_mailer   new file: welcome.html.erb
+
+6. put stuff in your view
+
+7.  add this line to site controller
+
+    def login
+      UserMailer.welcome('dude@party.house').deliver
+      redirect_to root_path
+    end
+
+8. test/mailer/preview/user_mailer_preview.rb
+
+    class UserMailerPreview < ActionMailer::Preview
+
+      def welcome
+        UserMailer.welcome('billy@cheese.co')
+      end
+
+    end
+
+
+9. go to localhost:3000/rails/mailers      to see what your email looks like
+
+
+________________________________________________________________________________
+
+mailchimp.com      you send email from app to mailchimp, mailchimp analyses and processes it,
+                    then mailchimp sends the actual email. That way because gmail trusts mailchimp,
+                      they won't put the mail in spam folders.
+
+sendgrid.com       basically the same as mailchimp
+
+postmarkapp.com    basically the same as mailchimp
+
+
+You can go to addons.heroku.com and add these companies to your app
+
+
+
+
+
+
+Practice:
+admin mailer that'll email me report of how many users are in the db (some random number)
+click a button , should send email from admin mailer to send report of how many user in db

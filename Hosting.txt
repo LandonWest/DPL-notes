@@ -95,7 +95,7 @@ The local db is NOT the same as the production db
 >foodie(master)$heroku logs -t      (to continually update your heroku server logs)
 
 
-To fix a
+To fix or update a file(s), make your changes, then:
 
 git add -A
 git commit -m ""
@@ -147,6 +147,7 @@ gem 'thin'
 add a new file called 'Procfile' to your main app directory
 put this in it:
 
+(Always through the Procfile is where you change the server.)
 
 web: bundle exec thin start -p $PORT
 
@@ -155,3 +156,14 @@ Then:
 >git add -A
 >git commit -m ""
 >git push heroku master
+
+
+_________________________
+STEPS
+
+1. gitinit
+2. add files
+3. commit
+4. heroku login,  heroku auth:whoami
+5. heroku create
+6. git push heroku master
