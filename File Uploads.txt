@@ -1,0 +1,118 @@
+FILE UPLOADS
+________________________________________________________________________________
+
+.csv file - comma separated value, ex. spreadsheets
+
+-You can save files into a Sql db, but it not recommended
+-Generally you save file uploads onto your machine's file system
+
+Photo Uploads:
+
+  aspect ratio - the dimensions of one photo compared to the dimensions of another
+    photo (or the space its to go in)
+  ( W x H )    ex. 640 x 480
+  cropping -
+  resize to fit -
+  resize to fill -
+
+
+Gem's
+________________________________________________________________________________
+
+CarrierWave
+
+1. add to gemfile
+2. console >rails generate uploader restaurant_logo
+3. console >brew install imagemagick  (you have to install this first before the
+                                          other stuff, RMagick and MiniMagick, will work)
+   console >which identify   (this shows you if its actually installed and the path to it)
+4. add minimagick gem to gemfile
+5. app/uploaders/restaurant_logo_uploader.rb
+    uncomment: include CarrierWave::MiniMagick
+6. uncomment:
+      # Provide a default URL as a default if there hasn't been a file uploaded:
+    ->  def default_url
+
+      ActionController::Base.helpers.asset_path("default_#{version_name}.jpg")
+    end
+
+  (get a couple pictures and save into assets/images, one is default_normal one is default_thumb)
+
+7.
+  # Create different versions of your uploaded files:
+  # version :thumb do
+  #   process :resize_to_fit => [50, 50]
+  # end
+
+  version :normal do
+    process resize_to_fill: [200, 200]
+  end
+
+  version :thumb do
+    process resize_to_fill: [50, 50]
+  end
+
+8. uncomment
+
+  # Add a white list of extensions which are allowed to be uploaded.
+  # For images you might use something like this:
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+
+9. console
+   >rails g migration add_logo_to_restaurants
+
+   add to migration file:
+
+    class AddLogoToRestaurants < ActiveRecord::Migration
+      def change
+  ->    add_column :restaurants, :logo, :string
+      end
+    end
+
+
+    then rake db:migrate
+
+10. restaurant model
+
+    class Restaurant < ActiveRecord::Base
+      mount_uploader :logo, RestaurantLogoUploader              <- add this line
+
+      has_many :noms
+    end
+
+
+11. add the uploader into the form
+
+    <div class="field">
+      <%= f.label :logo %><br>
+      <%= f.file_field :logo %>
+    </div>
+
+
+    *you cannot style uploader fields in forms, you can only use javascript to do that
+
+12. make sure to update your strong params in restaurant controller
+
+      def restaurant_params
+        params.require(:restaurant).permit(:name, :address, :logo)
+      end
+
+13. add image tag to restaurant show page, so the image will actually display
+
+  <p>
+    <%= image_tag(@restaurant.logo.url(:normal)) %>
+  </p>
+
+
+________________________________________________________________________________
+14. restaurant index.html.erb
+
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= image_tag(restaurant.logo.url(:thumb)) %></td>             <- add this line
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
