@@ -20,10 +20,11 @@ Gem's
 ________________________________________________________________________________
 
 CarrierWave
+___________
 
 1. add to gemfile
 2. console >rails generate uploader restaurant_logo
-3. console >brew install imagemagick  (you have to install this first before the
+3. console >brew install imagemagick  (for image files)(you have to install this first before the
                                           other stuff, RMagick and MiniMagick, will work)
    console >which identify   (this shows you if its actually installed and the path to it)
 4. add minimagick gem to gemfile
@@ -40,9 +41,6 @@ CarrierWave
 
 7.
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
 
   version :normal do
     process resize_to_fill: [200, 200]

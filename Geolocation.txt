@@ -1,0 +1,32 @@
+GEOLOCATION
+
+Lattitude and Longitude (are floats)
+
+GeoCoding
+  taking an address and converting it to lattitude and longitude
+Reverse GeoCoding
+  taking the lattitude and longitude and converting it to an address
+
+
+You can do GeoCoding from an IP Address, which means if someone has your IP Address
+  they can find exactly where you are!
+
+
+Ruby GeoCoder Gem ,  Rubygeocoder.com
+
+
+GeoCoding requires the use of an external service (a third party API, like google maps,
+  downside is google limits you to 2500 geocoding requests in a day, you can pay for
+  google business premier which gives you 100,000/day but for $10,000 a year!)
+
+there is a database of geocodes from MaxMind that you can use that has every city in the world's geocodes, but the file is MASSIVE
+
+  Other APIs:
+  Yahoo Boss
+  Bing
+  Nominatim
+  Yandex (25000/day, but is really slow)
+  Geocoder.ca (only for us and candada)
+  Mapquest
+  GeoCode Farm (Jeremy has a GeoCoder fork of the gem on his github)
+  etc...
