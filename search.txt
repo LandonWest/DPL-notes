@@ -1,0 +1,98 @@
+SEARCH Function
+________________________________________________________________________________
+
+Search forms use a 'get' not a 'post' because your retrieving info from the db, and
+  the results are generally and array of data.
+
+Ex1
+
+  Name: The Fuzzy Bunny
+
+  where("LOWER(name) LIKE ?", "%fuzzy%")  -this technically works but is super inefficient.
+
+
+
+*postgresql comes prebuilt with a full-text search engine built into it, mysql does not.
+
+'full text search' scans an entire document if needed
+
+'fuzzy search' "Did you mean fuzzy?" the search asks what it thinks you might have meant to search for.
+  fuzzy searching is really complex and inefficient. Google does it, but has lots of custom stuff.
+
+
+________________________________________________________________________________
+SET UP SEARCH w/ PG SEARCH
+________________________________________________________________________________
+
+1. install gem 'pg_search'
+      -bundle
+
+2. setup multi-search by creating migration
+
+  >rails g pg_search:migration:multisearch
+
+  then open new migration file (nothing to change yet)
+
+3. rake db:migrate
+
+4. In the menu_item model add:
+
+    include PgSearch
+    multisearchable against: [:name, :description]
+
+5. tell postgres we wanna be able to search on this model
+      >rake pg_search:multisearch:rebuild[MenuItem]
+
+6. in RAILS CONSOLE you can search for stuff:
+    >PgSearch.multisearch('taco')
+
+    >results = PgSearch.multisearch('taco')
+
+    >results.first
+
+    >result = results.first
+
+    >result.searchable
+
+7. add search to home page application_layout
+
+    <%= form_tag('', method: :get) do %>
+      <div class="input-group">
+        <%= text_field_tag(:q, '', placeholder: 'Search...', class: 'form-control') %>
+        <span class="input-group-btn">
+          <%= submit_tag('Go!', class: 'btn btn-primary') %>
+        </span>
+      </div>
+    <% end %>
+
+8. add to routes:
+
+    get '/search' => 'search_results#index'
+
+9. rails g controller search_results
+
+    add index action to controler
+    add index view to search_views folder
+
+    def index
+      @results = PgSearch.multisearch(params[:q])
+    end
+
+
+
+
+
+
+10. SEARCHING THROUGH ASSOCIATIONS
+
+    >rails g pg_search:migration:associated_against
+    > rake db:migrate
+
+
+    in menu item model:
+
+      multisearchable against: [:name, :description], associated_against: { ingredients: [:name] }
+
+    in rails c:
+
+      [1] pry(main)> PgSearch::Multisearch.rebuild(MenuItem, Ingredient)  
