@@ -95,4 +95,96 @@ ________________________________________________________________________________
 
     in rails c:
 
-      [1] pry(main)> PgSearch::Multisearch.rebuild(MenuItem, Ingredient)  
+      [1] pry(main)> PgSearch::Multisearch.rebuild(MenuItem, Ingredient)
+
+
+
+
+
+________________________________________________________________________________
+________________________________________________________________________________
+________________________________________________________________________________
+________________________________________________________________________________
+
+
+Lucene framework by Apache Group
+
+3 big time search engines built off Lucene:
+________________________________________________________________________________
+-sphinx         -works great w/ mysql, for data heavy searches
+-solar          -alot of online retailers like zappos use solar
+-elastic search -has plugin capabilities to extend its functionality. It uses its own
+                  persistent storage level, so you can use this in place of a postgresql db.
+                  The api is all JSON wich can use Ruby hashes.
+
+
+ELASTIC SEARCH
+_______________
+Most companies out there are using ElasticSearch
+
+data from the db gets synced into the elastic search cloud.
+
+to speed things up you have to add indexes to your data.
+
+elastic search spins up it own server (port 93 by default) and creates 'shards' to break up the indexing evenly
+
+STEPS:
+___________________________________________________
+*Need to have java installed for this search.  Java SE Development Kit 7 Download
+*also do >brew update first
+*also do >brew install elasticsearch (follow post-install console instructions to make it start on login)
+
+1. gemfile
+      gem 'elasticsearch-model'
+        bundle
+2. class MenuItem < ActiveRecord::Base
+    include Elasticsearch::Model   <-------- add
+
+    mapping do
+      indexes :name, boost: 10
+      indexes :description, type: 'string'            <--------add all this
+    end
+
+3. (this step is just to see if the search is working)
+
+  rails c
+
+  >MenuItem.import
+
+  >MenuItem.search('taco')
+  >response = MenuItem.search('taco')
+
+  different things you can do:
+    >response.took
+    >response.size
+
+    >response.results        (gets results form elastic search)
+    >response.results.first
+    >response.results.first.name
+
+  >response.records.first     (not as efficient cause it queries elastic search AND sql db)
+
+4. search_results controller
+
+  class SearchResultsController < ApplicationController
+
+  def index
+    @results = MenuItem.search(params[:q])     <------ add
+  end
+
+  end
+
+5. search_results index view:
+
+  <h1>Search Results for <%= params[:q] %></h1>
+
+  <p>Found <%= pluralize(@results.size, 'result') %></p>
+
+  <% @results.results.each do |result| %>
+    <ul>
+      <li><%= link_to(result.name, menu_item_path(result.id)) %></li>
+    </ul>
+
+  <% end %>
+
+6.
