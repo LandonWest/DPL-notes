@@ -1,0 +1,129 @@
+OAuth
+________________________________________________________________________________
+Login to our site using authorization from another site you commonly use.
+
+facebook, twitter, google, instagram, amazon, ebay etc. Can all be used to do OAuth
+
+downside: different website accounts will provide you with different user information. Example: facebook will
+  give you name, picture, email etc. But Twitter doesn't provide the user email, which your site has to have.
+
+
+  better flow:
+    1. create account
+      2. connect your facebook            > versus signing up with twitter account first which doesn't give an email.
+        3. merge the two accounts
+
+
+OAuth STEPS:
+________________________________________________________________________________
+
+_____(NOTE: before doing any of this, you need to already have done the twitter authorization stuff, @ dev.twitter.com  -my apps.  Refer to Mon July 14, Twitter API)
+
+1. add gems to gemfile
+    gem 'devise'
+    gem 'omniauth'
+    gem 'omniauth-twitter'
+
+     bundle
+
+2. rails g migration add_fields_to_user    (you can only login with twitter and thats it)
+
+    open migration file and add:
+
+      class AddFieldsToUser < ActiveRecord::Migration
+        def change
+          add_column :users, :provider, :string
+          add_column :users, :uid, :string
+
+          add_index :users, [:provider, :uid]
+        end
+      end
+
+
+    then >rake db:migrate
+
+
+3.config/initializer/devise.rb
+
+add:
+
+  # ==> OmniAuth
+  # Add a new OmniAuth provider. Check the wiki for more information on setting
+  # up on your models and hooks.
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']      <---------add, from secrets.yml
+
+
+4. user model:
+
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:twitter]    <----- add these
+end
+
+
+5. >rails g controller omniauth_callbacks
+
+
+6. routes
+
+Rails.application.routes.draw do
+
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}     <-------add
+
+7. in the omniauth_callbacks controller:
+
+
+    class OmniauthCallbacksController < Devise::OmniauthCallbacksController     <------change to this
+
+      def twitter
+        binding.pry     <-------- add this def   (when you log in with twitter it sends you to pry in the console and running   >request.env['omniauth.auth']gives    you all the users ino)
+      end
+
+    end
+
+8. layouts/application view
+
+
+  somewhere add:
+
+      <%= link_to('Login with Twitter',  user_omniauth_authorize_path("twitter")) %>
+
+
+9. OmniauthCallbacksController:
+
+
+  def twitter
+    @user = User.find_or_create_by_omniauth(auth_hash)
+
+    if @user.persisted?
+      sign_in @user
+      redirect_to root_path, notice: 'User now signed in with twitter'
+    else
+      redirect_to root_path, alert: 'Could not sign in'
+    end
+  end
+
+  private
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
+10. add to user model:
+
+  def self.find_or_create_by_omniauth(auth_hash)
+    instance = find_or_initialize_by(provider: auth_hash['provider'], uid: auth_hash['uid'])
+    instance.save(validate: false)
+    instance
+  end
+
+11. application layout view
+
+          <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+          <% else %>
+            <%= link_to('Login with Twitter',  user_omniauth_authorize_path("twitter")) %>
+          <% end %>
