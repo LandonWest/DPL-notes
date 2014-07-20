@@ -167,3 +167,7 @@ STEPS
 4. heroku login,  heroku auth:whoami
 5. heroku create
 6. git push heroku master
+
+___________________________
+
+patchatech(master)$heroku config       to look up all your heroku app config info. 
