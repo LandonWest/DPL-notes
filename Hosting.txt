@@ -170,4 +170,7 @@ STEPS
 
 ___________________________
 
-patchatech(master)$heroku config       to look up all your heroku app config info. 
+patchatech(master)$heroku config       to look up all your heroku app config info.
+
+
+* git remote add heroku git@heroku.com:patchatech.git   (this adds access to your app)
