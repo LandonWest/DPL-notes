@@ -1,0 +1,120 @@
+Rake Tasks
+________________________________________________________________________________
+________________________________________________________________________________
+
+chron tabs - a file that lives on the computer that has a series of code that tell
+  the computer you want to do some sort of action every so often.
+
+  ex. when computer boots up, run chron tab. Every morning at 9am shoot me an email
+      with certain info. Every week, notify me of peoples' birthdays. Every first
+      Saturday of the month, do something.
+
+  es. every week on saturday connect to an api, pull in any new data, and update the db.
+
+
+custom rake tasks -
+
+
+rake is a gem that comes with ruby by default. Rails uses rake, but it can be used
+  outside of Rails also
+
+>rake -T        shows you all available rake tasks
+
+Custom Rake Tasks go in the lib/tasks folder
+  whenever you create a new file call it 'something.rake' (this is still a ruby file though)
+
+_______________________
+ex. lib/taks/crap.rake
+
+  desc 'This is crap. Rake the leaves'
+  task leaves: :environment do            #name of the rake task: :environment, this will always run rake task in current environment
+    puts "raking the leaves"
+  end
+
+
+  Now you can run this in terminal simply by running:    >rake leaves
+
+_______________________
+Namespaced rake tasks:
+ex.
+
+  namespace :garden do
+
+    desc 'Show our tools'
+    task tools: :environment do
+      puts ['rake', 'hoe', 'leaf blower']
+    end
+
+  end
+
+
+  Then  >rake garden:tools
+
+ex.
+
+  desc 'Use a tool'
+  task using: :environment do
+    tool = ENV['TOOL'] || 'hose'
+    puts "Using the #{tool}"
+  end
+
+
+  then >
+
+    tacoz(rake_tasks)$rake garden:using
+    Using the hose
+    tacoz(rake_tasks)$rake garden:using TOOL='weed whacker'
+    Using the weed whacker
+
+_________________________________________________________
+create new file:    reports.rake
+
+namespace :report do
+
+  desc 'Count the number of Vegetarian items'
+  task vegetarian_count: :environment do
+    count = MenuItem.where(vegetarian: true).count
+    puts "We have #{count} vegetarian items"
+  end
+
+end
+______________________
+in contact_mailer.rb:
+
+  def send_report(stats_hash)
+    @stats_hash = stats_hash
+    mail(to: 'me@tacoz.com', subject: 'Daily Report')
+  end
+
+____________________
+views/contact_mailer     new file: send_report.html.erb
+
+<h2>Daily Report</h2>
+<% @stats_hash.each_pair do |key, value| %>
+  <p><%= key %> -- <%= value %></p>
+<% end %>
+
+_________________________________________________________________________________
+
+gem 'clockwork'
+  bundle
+
+config/    new file: schedule.rb
+
+  module Clockwork
+
+    # run the report:email_stats rake task
+    # every day at 2am and email me stats
+    every 1.day, at: '02:00' do
+      rake 'report:email_stats'
+    end
+
+  end
+
+add to Procfile:
+
+Scheduler...
+
+
+
+You deploy to Heroku and add this add-on: Heroku Scheduler and it will automatically work
