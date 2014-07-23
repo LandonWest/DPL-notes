@@ -1,0 +1,24 @@
+Web Scraping
+________________________________________________________________________________
+
+You can scrape publicly accessible info from the web such as, arrest and marriage records,
+  trading information etc.
+If a website doesn't have an API, start scraping it!
+Yelp has an API to get its data.
+
+Gems for scraping:
+__________________
+
+gem 'mechanize' *can't accept javascript. Its a headless browser, it all happens inside
+                  of the terminal. It's faster than water
+
+gem 'watir' *can't use on Heroku. A little slower, but parses CSS, runs Javascript, and
+              downloads images.
+              Watir opens a zombie browser and completely controls it through the terminal.
+
+
+
+
+
+
+Refer to desktop/projects/notes/ruby_stuff/scrape_stuff      -for example project this   
