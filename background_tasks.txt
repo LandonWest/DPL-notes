@@ -1,0 +1,108 @@
+Backgound Tasks:
+________________________________________________________________________________
+________________________________________________________________________________
+
+'workers' divide up the task and get things done faster
+
+background tasks allow us to tell the workers to go ahead and work on this job in the background
+
+AJAX (asynchronous javascript and xml) is an example of this, but its only for the frontend
+  background tasks are the asynchronous tasks for the backend (server) side
+
+  ex. 4 different instances of your rails app running separately on separate servers all
+      running workers, while the users still go to the main app on the main server.
+
+      send the video uploading to the background task workers on the worker servers
+        while the users continue on the site
+
+  On Heroku, one 'dyno' (web server) is your single, app server. You can create as many dynos as you want
+    you create more dynos for more worker servers that run different background tasks
+
+
+  Gems that allow us to do background tasks:
+
+    - Delayed_Job,   one downside: data has to be persisted somewhere, so delayed_job puts it in your db
+        and then has to pull it back out of the db some time later when it needs to run that background task.
+        So you need to have a Really beefy db to handle this.
+
+    - Resque, stores everything into a different type of db that stores in memory (Ram).
+
+    - Sidekiq, (most commonly used by companies today)
+
+
+SIDEKIQ
+______________________________________________
+
+sidekiq has to run on a worker (or sidekiq) server. so you'll have to have two terminal windows
+  open at one time locally.
+
+Redis - open source, BSD licensed, advance key-value store (basically a giant hash that lives in memory)
+  Twitter is 90% Redis
+  -redis uses a language called 'Lua' wich is used in nintendo and WoW, its super fast
+    gem 'wolverine' lets us us Lua script in rails apps
+
+1. Make sure redis is installed
+    >brew install redis
+      >which redis-server    to see if its fully installed
+        >ps aux | grep redis     to see if its currently running
+
+2. Install sidekiq
+    gem 'sidekiq'
+      then bundle!
+
+3. in app directory, make new directory called 'workers'
+
+4. make new file in workers dir called 'fake_worker.rb'
+
+    set up a new class:
+
+    class FakeWorker
+      include Sidekiq::Worker
+
+      def perform
+
+      end
+    end
+
+5. def perform
+    puts "Running a long task"
+    sleep 30
+    puts "Almost done!!!"
+    sleep 2
+    puts "DONE!!! ZOMG! O_o\n\n"
+  end
+
+6. start up sidekiq server
+
+    >bundle exec sidekiq
+
+7. open second terminal tab and hop in to rails console
+
+    >rails c
+
+    > FakeWorker.perform_async      then you can see it running in the sidekiq server
+______________________________________________________________________________________
+
+
+ Sidekiq  wiki: monitoring,  add sinatra app for monitoring sidekiq
+
+ Heroku add-on: redis to go
+
+
+________________________________________________________________________________
+You add new worker servers in the Procfile and then Heroku adds them for you. You can find
+  these lines under the dynos on heroku. 
+
+web: bundle exec thin start -p $PORT        The web server for Thin (One has to be named 'web')
+
+workers: bundle exec sidekiq            You can name the worker servers whatever you want, theres also
+                                        a lot of options you can add on (-q, strong, etc) from sidekiq docs.
+
+gem 'foreman' makes the workers in the procfile work locally like they do in production,
+  meaning, you won't have to open up all the servers in different tabs
+
+Redis To Go add-on to heroku
+
+*you have to pay for the worker server, but you can turn it on in heroku to try it out,
+  then turn it off when you're not using it, because it charges ~ $0.08/hr so you won't
+  be billed the entire $34.50/month.
