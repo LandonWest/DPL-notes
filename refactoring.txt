@@ -1,0 +1,52 @@
+REFACTORING
+________________________________________________________________________________
+________________________________________________________________________________
+
+TDD Lifecycle:
+Red, Green, Refactor
+
+
+First write code that WORKS regardless of how ugly it is.
+Write tests and get them to pass, then when you refactor, you'll know if your refactored code works.
+
+Technical Debt - the amount of debt you encore when writing an application. This is
+        not monetary, but stuff you didn't have time to do the first run around or
+        bugs you haven't fixed. Refactoring is one way you can pay off your technical debt.
+
+________________________________________________________________________________
+Sandi Metz's rules:
+
+1. Your class can be no more than 100 lines of code
+2. Your methods can be no more than 5 lines of code
+3. You can pass no more than 4 parameters and you can't just make it one big hash
+4. When a call comes into your Rails controller, you can only instantiate one object
+    to do whatever it is that needs to be done.
+
+You can break these rules if you can talk your pair into agreeing with you.
+
+________________________________________________________________________________
+
+"skinny controllers, fat models"
+
+If you're doing a lot of logic in your controllers, see if you can make a class
+  with methods to take care of it.
+
+
+
+
+GEMS that help with figuring out what needs to be REFACTORED:
+______________________________________________________________
+
+
+gem 'sandi_meter'    generates an html page with graphs that report on your app's
+                        adherence to Sandi Metz's rules
+
+gem 'reek'     code smell detection for Ruby.
+
+codeclimate.com    will grade your classes and even the contributors on code quality
+                    also identifies security holes. It also warns you before pulling
+                      or merging things if its going to break your code.
+
+
+The Gilded Rose Code Kata - for practicing code refactoring. Rewrite a really long
+        method and make sure all the specs still pass.
