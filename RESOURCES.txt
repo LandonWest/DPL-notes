@@ -1,0 +1,71 @@
+RESOURCES
+________________________________________________________________________________
+--------------------------------------------------------------------------------
+
+WEBSITES
+--------------------------------------------------------------------------------
+
+Rails app builders:
+___________________
+www.prelang.com        for generating rails projects from a gui
+
+www.drystorm.com
+
+
+
+Themes/Styling:
+___________________
+www.railsthemes.com    sells rails themes, you install a gem and it sets up the
+                       rails app for you
+
+www.wrapbootstrap.com  easy once you get the hang of it, but difficult at first.
+                       Going with a theme can take 3 hrs to set up, vs. 3 days of
+                       your time, so its cost effective, rather than designing it
+                       yourself
+
+dressed.com            Rails themes
+
+
+
+Learning Resources:
+___________________
+www.reddit.com/r/rubyonrails
+
+www.gorails.com
+
+Business:
+_________
+www.invoiceable.co      keep track of invoices for freelancing
+                        sign up for an account, it keeps graphs, invoices, lets
+                        you keep track of how much you're making, so you can
+                        pay proper taxes. Take whatever time a task would take
+                        in a perfect world scenario and times it by 3 to account
+                        for unexpected hold-ups. Round up to an hour. Freelancers
+                        generally charge around $50/hr, web shops generally charge
+                        around $100/hr. Starting out you'll have to price yourself
+                        really low, because right now Time and Experience are worth
+                        more than Dollars.
+
+www.fiverr.com           to freelance and make a quick five bucks
+
+www.elance.com           look for freelance work
+
+www.toprubyjobs.com      to look for contract ruby jobs
+
+
+
+BOOKS
+--------------------------------------------------------------------------------
+
+"Learn To Program" Chris Pine                -online for free, Ruby centered
+"The Passionate Programmer"  Chad Fowler     -a lot of people swear by this book
+"The Well-Grounded Rubyist" David Black      -potentially kind of dry, but really good material
+
+"Object Thinking" David West
+
+
+
+GEMS
+--------------------------------------------------------------------------------
+gem 'spree'         for ecommerce sites
+gem 'piggybak'      for ecommerce sites
