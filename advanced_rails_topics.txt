@@ -1,0 +1,96 @@
+ADVANCED RAILS Topics
+________________________________________________________________________________
+________________________________________________________________________________
+
+No one really uses ERB, they use alternate templating engines like HAML and SLIM
+
+Slim is slightly less syntax than HAML and also compiles slightly faster
+
+SaSS is a templating engine we've been using. (app.css.scss) (you can also use app.css.sass)
+
+CSS
+__________________
+#wrap {
+  color: #ff9900;
+}
+
+SCSS     - with scss you can set variables. ex. make a file _typography.scss in a shared
+folder in your stylsheets, then just put @import 'styles/_typography.scss' (?) in all your other scss filesand
+  put all your color variables in it so they are consistent everywhere on the website.
+__________________
+$orange: #ff9900
+#wrap {
+  color: $orange;
+}
+
+SaSS     - sass doesn't use any semi-colons etc. it uses whitespace and indentation
+__________________
+$orange: #ff9900
+#wrap
+  color: $orange
+
+Less
+__________________
+
+
+
+
+JAVASCRIPT
+________________________________________________________________________________
+
+CoffeeScript : is a language that compiles to javascript. CoffeScript can be written in Node.
+  It uses way less syntax, and drops the brackets and semicolons. file: (app.js.coffee)
+
+JS
+$(function() {
+  alert("hello");
+});
+
+
+Coffee
+$ -> alert "hello"
+
+________________________________________________________________________________
+
+Your Views should not contain any logic at all
+
+# layout.slim
+- if user_signed_in?
+  li= link_to('Log Out')
+- else
+  li= link_to('Sign In')
+
+
+Presenter pattern
+Decorator pattern
+
+gem 'draper'   allows you to abstract logic out from your view into other files and then
+  call .decorate in your controller and create a decorators folder with decorator.rb file and
+  put methods in there for the logic you need.
+
+
+METAPROGRAMMING
+________________________________________________________________________________
+
+Rails is HEAVILY dependent on metaprogramming
+
+
+
+READING OTHER PEOPLE'S CODE WILL HELP YOU WRITE BETTER CODE
+
+Look over the Rails source code and take in as much as you can.
+
+
+________________________________________________________________________________
+
+POLYMORPHISM:
+
+An event has different hosts. Event belongs to host. Sometimes the host is a venue,
+sometimes an organization, sometimes a user.
+
+_________________________
+check out daily:
+
+reddit.com/r/rubyonrails
+
+gorails.com
