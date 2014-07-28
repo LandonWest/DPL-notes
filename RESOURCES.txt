@@ -52,6 +52,9 @@ www.elance.com           look for freelance work
 
 www.toprubyjobs.com      to look for contract ruby jobs
 
+www.projecteuler.net     for katas. according to a Dickhead, if you can't do the first 5,
+                         you can't get a rails job.
+
 
 
 BOOKS
