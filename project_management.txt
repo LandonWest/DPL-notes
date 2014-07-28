@@ -1,0 +1,34 @@
+PROJECT MANAGEMENT
+--------------------------------------------------------------------------------
+________________________________________________________________________________
+
+PMP Certification - project management certification
+
+Three Main Styles of Project Management:
+
+1.  Agile
+      Sprint- possibly 1 or 2 weeks long, durring which you plan out what you want
+      to get done. After 2 weeks you should be able to report back that you're done
+      w/ that feature you were tasked w/.
+      If you can't get it done, go out to meetups etc. and ask for help! Be up front
+      w/ your project manager
+2.  Scrum
+      Very similar to Agile
+
+3.  ConBon
+      Quicker report times. After every feature you complete you report back. You
+      could be reporting back every day. Can be very stressful.. Banjo.io in Vegas
+      does this style.
+
+
+https://sprint.ly     Watch how projects are going in real-time. You can make stories,
+      tasks, defects, or tests to help with implementing new ideas and features.
+      "As an 'accountant', I want 'some new feature' because 'reason'."
+
+www.pivotaltracker.com      You can rate taks on a 1-3 scale. Gives you different
+      buckets to put your tasks in.
+
+https://basecamp.com      A general overview project mgmt. tool. The first rails
+      app, created by DHH. 
+
+Any project meeting should be 15 minutes only, but you meet often.
