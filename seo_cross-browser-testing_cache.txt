@@ -1,0 +1,41 @@
+Cross Browser Testing
+
+cross-platform testing
+
+www.browserstack.com  Awesome, but charges a fee
+www.modern.ie    lets you download different versions of windows with Internet Explorer and
+                  run them in a virtual box on your machine.
+
+xCode on macs let you open a fully functional ios phone simulator.
+
+
+
+CDN content delivery network.
+    looks at where you are at and finds a version of the file you need that is closest to you,
+    this speeds things up.
+
+Compress your css, js, and images to speed up your website. Rails does this for us, but in other apps you'll need to do it.
+
+  ImageOptim - free program to compress your images. It basically acts like a hard drive de-fragger on your file.
+
+
+Cache
+
+  www.varnish-cache.org      takes the load of requests off your rails app and its db
+
+If you wan't to be able to scale up your app you're going to have to Cache. If you do
+caching, your website will be blazing fast. There's nothing faster than raw html and css
+
+  its said the 2 hardest things to do in development are Name Things, and Cache
+
+
+Having clean url like follows, is really good for SEO
+Put your info on Google Places, and other sites that are already ranked high
+
+
+In the model:
+#this looks like:   /restaurants/1-red-iguana.com
+
+def to_param
+  "#{id}-#{name.parameterize}"
+end
