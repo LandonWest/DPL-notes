@@ -1,0 +1,70 @@
+JOB SEARCH
+________________________________________________________________________________
+
+Prepare- do your research on the company
+  -first and foremost, they're looking for how well you fit-in with the company
+  -be confident, not arrogant, you don't have to know everything
+  -a place like Instructure will want you to wear a shirt/tie. Reddit would probly be fine
+      with jeans and a shirt. It depends on the company
+
+  -if you go in to an interview and bomb all the questions, you're probably not good enough, so
+        you need to practice, practice, practice!
+
+  -if you don't get hired, it's ok to follow up with them and ask them why you didn't get hire.
+      a lot of times senior developers are happy to help you out and let you know what you can work on.
+
+  -ask other people what questions they are getting in their interviews. Sometimes
+      companies use the same white-board challenges, etc.
+
+  -be an eternal student! Continue to code and learn new things as you're looking for a job.
+      Quintin came back for 3 more months after graduation and continued to learn and ask
+        questions, and then was able to get hired as a mid-level developer.
+
+  -the first thing we should do when we're outa here is make and work on a portfolio site. check out: benegget.com
+
+  -white-board/logic question - they're looking for the process, not the solution. Figure out
+      what the steps are and how you would solve it and don't worry as much about coding it perfectly.
+
+  -practice the tough questions: 'what are your weaknesses' etc.
+  -ask some questions yourself.
+
+
+
+
+
+RESUMES
+________________________________________________________________________________
+
+-contact info
+-research and Customize
+-list skills, include keywords from job descriptions, don't list things that your
+  not able to brush up on quickly and demonstrate on an interview
+-be creative w/ the format and send as pdf
+-keep it to 1 page!
+
+-don't leave gaps in work history, but don't list descriptions and skills that aren't relevant
+-don't lie
+-SPELLING ERRORS / GRAMMAR!
+-keep the same font throughout, and default fonts
+-No graphics
+-You actually should be bland
+
+Hiring Managers:
+-most don't have a background in tech
+-they favor grammar, punctuation etc.
+-they use filters
+
+
+Tips:
+-Keep a Master Resume
+-add ALL the DPL skills you've learned
+-do your research
+-follow up
+
+Negotiations:
+-research and listen to
+-know your value          www.glassdoor.com
+-"He who talks first, loses"
+-More than just cash. Benefits, 401K, etc.
+-counter offer
+-stay away from a company where you one of the only devs when you're starting out w/ limited skills

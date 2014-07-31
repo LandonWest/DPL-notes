@@ -72,3 +72,20 @@ GEMS
 --------------------------------------------------------------------------------
 gem 'spree'         for ecommerce sites
 gem 'piggybak'      for ecommerce sites
+
+
+JOBS / NETWORKING
+--------------------------------------------------------------------------------
+
+angel.co/jobs           start-ups
+github.com/jobs
+weworkremotely.com      remote jobs
+linkedin.com
+toprubyjobs.com
+sortfolio.com           find cool companies in an area you're interested in, contact
+                          them for jobs (cube2media is a rails shop in SLC)
+
+                          Web dev shops are a way to increase you skills quickly and
+                          you get super solid doing one set of things. Downside is
+                          you will be doing one set of things over and over.
+                          
