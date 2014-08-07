@@ -1,0 +1,62 @@
+DRUG Meetup 08/06/14
+
+Wrapping APIs with Ruby
+________________________________________________________________________________
+
+Request Methods:
+
+API Content Type:
+-Json   -the most used.  jsonapi.org
+-XML
+-HTML
+-SOAP, WSDL :(
+
+Structure:
+-RESTful "representational state transfer" follows Rails CRUD actions centered around the URL path. (look into hypermedia api's)
+-Versioned
+-Patterned
+
+Limits:
+-Requests per minute
+-Rquests per day/month
+
+Consuming API w/ Ruby
+
+HTTP isn't just for browsers
+
+gem 'httparty' - simple http requests
+
+in ruby console:
+
+  require 'httparty'
+  r= HTTParty.get(http://api.openweathermap.org/data/2.5/weather?q=Baltimore)
+  r.body
+  r['coord']
+  r.headers
+  r.parsed_response
+
+HTTParty takes the response JSON, and parses it into a ruby hash which you can manipulate.
+
+%20 is the 'empty space' character
+
+CGI.escape('Salt Lake City') => 'Salt+Lake+City'       this takes care of the empty spaces for you
+
+TIPS FOR SUCCESS
+-keep it simple
+-versioning is key
+-make working with it simple
+-use Hashie::Mash to Rubify your results
+
+
+
+> bundle gem meetup       creates a new gem called 'meetup'
+
+if your writing gems, don't put them in your Gemfile, put them in the gemspec file
+
+
+
+...
+
+
+
+gem 'hashie'
