@@ -1,0 +1,66 @@
+EAST BAY RUBY MEETUP - 8/21/14 - YOU DON'T KNOW GIT
+John - speaker
+Rahul-BayOne Solutions
+
+East Bay Rails Meetup - affiliated; every other month or so, not promoted
+
+Rbenv might fix a lot of the problems with RVM
+
+git filter branch *look into for removing files you don't want in your repo
+
+> git config --global color.ui true            -this gives you colors on your commands
+
+SHORTCUTS:
+--------------------------------
+
+> git cofig -e [--global]
+a = add -A
+st = status
+co = checkout
+unstage = reset HEAD --
+
+ZShell and OhMyZShell
+or-
+bash aliases
+
+
+some dif (merge) tools on the mac
+----------------------------------
+
+opendiff  (warning, sometimes does things you don't want)
+FileMerge (warning, sometimes does things you don't want)
+vimdiff
+your favorite editor
+*or just manually edit your merge conflict files
+
+____________________________________________________________
+code from your current branch is displayed under <<<<<<<HEAD
+then a seperation with ===========
+then code from your current branch below
+
+git pull without specifying a branch pulls everything from All branches.
+
+git rebase origin/master     ??? different origin <space> master, which references the remote repo.
+                                  origin/master    references the local master (entire repo?)
+
+*rebase - when your working on something and want to keep working on it
+          need to collapse many commits into a single commit(use this for open-source projects)
+          need to incorporate changes from origin/master into your branch
+
+"squash"
+git rebase -i<commit-sha>
+
+>git log  shows you all the changes in your branch
+>git log -p  shows diffs
+
+>git reflog    #find your HEAD
+>git reset --HARD    #takes you back one commit
+
+git push origin :[branch]      #pushes nothing to branch, essentially deleting it
+
+
+PagerDuty in SF aggressively hiring Rails engineers, about 65 people, manages alerting for on-call engineers
+Isaac Shill, open Rails, seniors
+Cloud Passage, 3 open backend Rails positions, seniors,  family friendly, remote work possible, 80 people, provides security monitoring software for cloud env
+Jon- QA and Testing
+BayOne Solutions has a ton of openings, ~11 startups, will train

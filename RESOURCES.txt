@@ -63,9 +63,11 @@ BOOKS
 "Learn To Program" Chris Pine                -online for free, Ruby centered
 "The Passionate Programmer"  Chad Fowler     -a lot of people swear by this book
 "The Well-Grounded Rubyist" David Black      -potentially kind of dry, but really good material
-
+          <some book>       Sandi Metz
 "Object Thinking" David West
 
+Safari books online - for free at local library?
+"Pro Git" Scott Chacone     available online
 
 
 GEMS
@@ -88,4 +90,3 @@ sortfolio.com           find cool companies in an area you're interested in, con
                           Web dev shops are a way to increase you skills quickly and
                           you get super solid doing one set of things. Downside is
                           you will be doing one set of things over and over.
-                          
