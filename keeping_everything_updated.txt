@@ -1,0 +1,28 @@
+Keeping Everything Updated
+--------------------------------------------------------------------------------
+# http://railsapps.github.io/updating-rails.html?utm_source=rubyweekly&utm_medium=email
+
+Check the Gem Manager
+---------------------
+-RubyGems is the gem manager in Ruby.
+-Check the installed gem manager version:
+
+  $ gem -v
+
+Update Gem Manager:
+
+  $ gem update --system
+
+
+Display a List of Gemsets
+--------------------------
+
+$ rvm gemset list
+
+
+RVM's Global Gemset
+--------------------
+See what gems are installed in the “global” gemset:
+
+$ rvm gemset use global
+$ gem list

@@ -1,0 +1,190 @@
+JQuery Notes
+--------------------------------------------------------------------------------
+
+Fade in and out on mouse hover!
+
+$(document).ready(function() {
+    $('div').mouseenter(function() {
+        $('div').fadeTo('fast', 1);
+    });
+    $('div').mouseleave(function() {
+        $('div').fadeTo('fast', 0.5);
+    });
+});
+
+________________________________________
+
+fade in when document.ready
+
+$(document).ready(function() {
+    $('div').fadeIn(10000)
+});
+
+_________________________________________
+
+make things vanish by clicking a button
+
+$(document).ready(function() {
+    $('button').click(function() {
+        $('.vanish').fadeOut('slow');
+    });
+});
+
+_________________________________________
+
+Making circles with CSS
+
+div {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: #FF9C5B;
+    display: inline-block;
+}
+
+_________________________________________
+
+if you use an event handler on an element—that's the fancy name for actions like .click() and .mouseenter(), since they handle jQuery events—you can call the actual event that occurs (such as fadeOut()) on $(this)
+
+$(document).ready(function() {
+    $('div').click(function() {
+        $(this).fadeOut('slow');
+    });
+});
+________________________________________________________________________________
+
+Pull Tab! :)
+
+HTML
+<body>
+        <div class="panel">
+        <br />
+        <br />
+        <p>Now you see me!</p>
+        </div>
+        <p class="slide"><div class="pull-me">Slide Up/Down</div></p>
+    </body>
+CSS
+body {
+    margin:0 auto;
+    padding:0;
+    width:200px;
+    text-align:center;
+}
+.pull-me{
+    -webkit-box-shadow: 0 0 8px #FFD700;
+    -moz-box-shadow: 0 0 8px #FFD700;
+    box-shadow: 0 0 8px #FFD700;
+    cursor:pointer;
+}
+.panel {
+    background: #ffffbd;
+    background-size:90% 90%;
+    height:300px;
+    display:none;
+    font-family:garamond,times-new-roman,serif;
+}
+.panel p{
+    text-align:center;
+}
+.slide {
+    margin:0;
+    padding:0;
+    border-top:solid 2px #cc0000;
+}
+.pull-me {
+    display:block;
+    position:relative;
+    right:-25px;
+    width:150px;
+    height:20px;
+    font-family:arial,sans-serif;
+    font-size:14px;
+    color:#ffffff;
+    background:#cc0000;
+    text-decoration:none;
+    -moz-border-bottom-left-radius:5px;
+    -moz-border-bottom-right-radius:5px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.pull-me p {
+    text-align:center;
+}
+
+JQUERY
+$(document).ready(function() {
+    $('.pull-me').click(function() {
+        $('.panel').slideToggle('slow');
+    });
+});
+
+________________________________________________________________________________
+
+Add a styled class. (#text is an id of the div we're targeting, 'highlighted' is the class to add)
+
+$(document).ready(function() {
+    $('#text').click(function() {
+        $(this).addClass('highlighted');
+    });
+});
+
+*or use .toggleClass to toggle the class on and off
+
+________________________________________________________________________________
+
+Change height, width or any css property
+
+$(document).ready(function() {
+    var $d = $('div')
+    $d.height('200px');
+    $d.width('200px');
+    $d.css('border-radius', '10px');
+});
+
+________________________________________________________________________________
+
+Modifying the content in between the opening and closing html tags. This will change the first 'p' tag content it finds in the document.
+This changes what is currently written in the first <p> to "jQuery magic..."
+
+$(document).ready(function() {
+    $('p').html("jQuery magic in action!");
+});
+
+________________________________________________________________________________
+
+TO-DO List   create a variable that stores the value (val) of the input from the form then append it as a new div
+
+--HTML--
+<h2>To Do</h2>
+<form name="checkListForm">
+	<input type="text" name="checkListItem"/>
+</form>
+<div id="button">Add!</div>
+<br/>
+<div class="list"></div>
+
+--jQUERY--
+$(document).ready(function() {
+    $('#button').click(function() {
+        var toAdd = $('input[name=checkListItem]').val();
+        $('.list').append("<div class='item'>" + toAdd + "</div>");
+    });
+});
+
+-----------------------------
+
+...and to remove the added items by clicking them...
+"think of .on() as a general handler that takes the event, its selector, and an action as inputs."
+
+$(document).ready(function() {
+    $('#button').click(function() {
+        var toAdd = $('input[name=checkListItem]').val();
+        $('.list').append("<div class='item'>" + toAdd + "</div>");
+    });
+    $(document).on('click', '.item', function() {
+        $(this).remove();
+    });
+});
+
+________________________________________________________________________________
