@@ -17,7 +17,7 @@ ________________________________________
 fade in when document.ready
 
 $(document).ready(function() {
-    $('div').fadeIn(10000)
+    $('div').fadeIn(10000);
 });
 
 _________________________________________
@@ -58,9 +58,9 @@ Pull Tab! :)
 HTML
 <body>
         <div class="panel">
-        <br />
-        <br />
-        <p>Now you see me!</p>
+          <br />
+          <br />
+          <p>Now you see me!</p>
         </div>
         <p class="slide"><div class="pull-me">Slide Up/Down</div></p>
     </body>
