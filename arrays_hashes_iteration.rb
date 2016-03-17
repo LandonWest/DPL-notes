@@ -2,8 +2,8 @@
 def histogram
   puts "Enter your text to show frequency of each word: "
   text = gets.chomp
-
-  words = text.downcase.split(" ")
+  # using the regular expression \W+ which will split on one or more non-word characters, ex. "one, two three: four"
+  words = text.downcase.split(/\W+/)
 
   frequencies = Hash.new(0)
 
