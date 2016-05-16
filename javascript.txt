@@ -65,12 +65,28 @@ NaN ("not a number")
 
 to figure out what datatype something is, use: typeof x
 
-________________________________________
+________________________________________________________________________________
+ARRAY methods
+________________________________________________________________________________
+
 Two ways to add objects to an array:
 
 names[3] = "Will";
-
 names.push("TY");
+____________________
+
+// add to the end of the array
+.push()
+
+// remove from the end of the array
+.pop()
+
+// remove from the front of an array
+.shift()
+
+// add to the front of an array
+.unshift()
+
 ________________________________________
 Creating an object (hash in ruby):
 
